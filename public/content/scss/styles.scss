@@ -1,0 +1,85 @@
+@import "mynormalize";
+@import "compass";
+
+html{
+	height: 100%;
+}
+body{
+	min-height: 100%;
+	background: #eee;
+	min-width: 700px;
+}
+
+.b-pair{
+	position: absolute;
+	top:0;
+	left:0;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	min-width: 700px;
+	min-height: 500px;
+}
+.b-icon{
+	width:50%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	background: #fff;
+	z-index: 3;
+	background-size: cover;
+	background-position: center;
+	@include filter(blur(30px) );
+
+	&.b-icon_left{
+		left: 0;
+	}
+	&.b-icon_right{
+		right: 0;
+	}
+}
+.b-link{
+	position: absolute;
+	top:50%;
+	width: 300px;
+	z-index: 4;
+	margin-top: -190px;
+
+	&.b-link_left{
+		left:25%;
+		margin-left:-150px;
+	}
+	&.b-link_right{
+		right: 25%;
+		margin-right: -150px;
+	}
+
+	img{
+		display: block;
+		width: 100%;
+		cursor: pointer;
+		@include border-radius(70px);
+		@include filter(drop-shadow(0 3px 4px #000));
+		&:hover{
+			@include filter(drop-shadow(0 7px 9px #000));
+		}
+	}
+
+}
+
+.b-stats{
+	display: none;
+	height:1200px;
+	width:300px;
+	background: red;
+	margin: 100px auto;
+}
+.b-menu{
+	position: fixed;
+	top:20px;
+	left:0;
+	right:0;
+	margin: auto;
+	z-index: 10;
+	width: 200px;
+}
