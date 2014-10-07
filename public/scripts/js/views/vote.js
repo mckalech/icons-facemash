@@ -19,12 +19,16 @@
         'click .b-link': 'reRender'
       },
       reRender: function() {
-        this.getIcons();
+        var that;
+        that = this;
+        this.$el.fadeOut(300, function() {
+          that.$el.html('');
+          that.getIcons();
+        });
       },
       getIcons: function() {
         var that;
         that = this;
-        that.$el.html('');
         $.get('/newcards', function(icons) {
           that.icons = icons;
           that.getIconsDoneCallBack();
@@ -32,6 +36,7 @@
       },
       getIconsDoneCallBack: function() {
         this.render();
+        this.$el.fadeIn(300);
       }
     });
     return VoteView;

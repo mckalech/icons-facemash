@@ -16,11 +16,15 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 		events : 
 			'click .b-link' : 'reRender'
 		reRender : ()->
-			@getIcons()
+			that = @
+			@$el.fadeOut(300, ()->
+				that.$el.html('');
+				that.getIcons()
+				return	
+			)
 			return
 		getIcons : ()->
 			that = @
-			that.$el.html('');
 			$.get('/newcards',(icons)->
 				that.icons = icons
 				that.getIconsDoneCallBack();
@@ -29,6 +33,7 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 			return
 		getIconsDoneCallBack : ()->
 			@render()
+			@$el.fadeIn(300)
 			return
 	});
 	VoteView;
