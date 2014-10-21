@@ -9,7 +9,7 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 			that = @;
 			that.$el.html('');
 			_.each(@icons, (item,index) ->
-				that.$el.append(that.template(item)) 
+				that.$el.append(that.template(item))  
 				return
 			);
 			return
