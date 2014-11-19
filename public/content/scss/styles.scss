@@ -19,14 +19,11 @@ body{
 	z-index: 2;
 	min-width: 700px;
 	min-height: 500px;
-	visibility: hidden;
-	@include transition(visibility 0s 0.3s, opacity 0.3s);
+	@include transition( opacity 0.5s linear);
 	opacity: 0;
 
 	&.active{
 		opacity: 1;
-		visibility: visible;
-		@include transition(opacity 0.3s);
 	}
 }
 .b-icon{
@@ -38,8 +35,8 @@ body{
 	z-index: 3;
 	background-size: cover;
 	background-position: center;
-	@include filter(blur(20px) );
-	@include opacity(0.6);
+	@include filter(blur(40px) );
+	@include opacity(0.65);
 
 	&.b-icon_left{
 		left: 0;

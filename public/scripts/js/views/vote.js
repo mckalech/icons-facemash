@@ -25,7 +25,7 @@
         setTimeout(function() {
           that.$el.html('');
           that.getIcons();
-        }, 300);
+        }, 500);
       },
       getIcons: function() {
         var that;
