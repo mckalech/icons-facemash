@@ -18,10 +18,10 @@
         } else {
           voteView = new VoteView();
         }
-        $pair.show();
+        $pair.show().addClass('active');
       },
       routeStats: function() {
-        $pair.hide();
+        $pair.hide().removeClass('active');
         $stats.show();
       }
     });

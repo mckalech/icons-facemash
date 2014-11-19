@@ -21,10 +21,11 @@
       reRender: function() {
         var that;
         that = this;
-        this.$el.fadeOut(300, function() {
+        this.$el.removeClass('active');
+        setTimeout(function() {
           that.$el.html('');
           that.getIcons();
-        });
+        }, 300);
       },
       getIcons: function() {
         var that;
@@ -35,8 +36,12 @@
         });
       },
       getIconsDoneCallBack: function() {
+        var that;
+        that = this;
         this.render();
-        this.$el.fadeIn(300);
+        this.$('img').load(function() {
+          that.$el.addClass('active');
+        });
       }
     });
     return VoteView;

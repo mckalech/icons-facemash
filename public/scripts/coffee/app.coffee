@@ -15,10 +15,10 @@ define ['jquery', 'underscore', 'backbone','views/vote',], ($, _, Backbone, Vote
 				voteView.reRender()
 			else
 				voteView = new VoteView()
-			$pair.show()
+			$pair.show().addClass('active')
 			return
 		routeStats : ()->
-			$pair.hide()
+			$pair.hide().removeClass('active')
 			$stats.show()
 			return
 	})

@@ -17,11 +17,12 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 			'click .b-link' : 'reRender'
 		reRender : ()->
 			that = @
-			@$el.fadeOut(300, ()->
+			@$el.removeClass('active');
+			setTimeout(()->
 				that.$el.html('');
 				that.getIcons()
-				return	
-			)
+				return
+			,300)
 			return
 		getIcons : ()->
 			that = @
@@ -32,8 +33,12 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 			)
 			return
 		getIconsDoneCallBack : ()->
+			that = @
 			@render()
-			@$el.fadeIn(300)
+			@$('img').load(()->
+				that.$el.addClass('active')
+				return
+			)
 			return
 	});
 	VoteView;
