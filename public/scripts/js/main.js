@@ -14,7 +14,8 @@
       backbone: {
         deps: ['underscore', 'jquery'],
         exports: 'Backbone'
-      }
+      },
+      waitSeconds: 0
     }
   });
 

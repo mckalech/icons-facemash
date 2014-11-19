@@ -11,6 +11,7 @@ require.config
         backbone :
             deps: ['underscore', 'jquery']
             exports: 'Backbone'
+    waitSeconds: 0
 
 require ['jquery', 'app'], ($ , app) ->
 	$ ->
