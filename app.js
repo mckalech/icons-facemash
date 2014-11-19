@@ -2,27 +2,11 @@ var express = require('express');
 var path = require('path'); 
 var app = express();
 var http = require('http');
-var icons = [
-	{
-		url: '/content/icons/1.jpg',
-		name: 'Name1'
-	},
-	{
-    	url: '/content/icons/2.jpg',
-    	name: 'Name2'
-	},
-	{
-		url: '/content/icons/3.jpg',
-		name: 'Name3'
-	},
-	{
-    	url: '/content/icons/4.jpg',
-    	name: 'Name4'
-	}
-];
-app.use(express.static(path.join(__dirname, "public"))); // запуск статического файлового сервера, который смотрит на папку public/ (в нашем случае отдает index.html)
 
-app.listen(3000, function(){
+app.set('port', (process.env.PORT || 3000))
+app.use(express.static(__dirname + '/public'))
+
+app.listen(app.get('port'), function(){
     console.log('Express server');
 });
 
