@@ -29,8 +29,8 @@
       getIcons: function() {
         var that;
         that = this;
-        $.get('/newcards', function(icons) {
-          that.icons = icons;
+        $.get('/newcards', function(answer) {
+          that.icons = answer.apps;
           that.getIconsDoneCallBack();
         });
       },

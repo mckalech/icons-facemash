@@ -25,8 +25,8 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 			return
 		getIcons : ()->
 			that = @
-			$.get('/newcards',(icons)->
-				that.icons = icons
+			$.get('/newcards',(answer)->
+				that.icons = answer.apps
 				that.getIconsDoneCallBack();
 				return
 			)
