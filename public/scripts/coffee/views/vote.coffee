@@ -1,4 +1,4 @@
-define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], ($, _, Backbone, iconTemplate) ->	
+define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/icon.html'], ($, _, Backbone, imagesLoaded, iconTemplate) ->	
 	VoteView = Backbone.View.extend({
 		el : $('.b-pair')
 		template : _.template(iconTemplate)
@@ -35,7 +35,7 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], (
 		getIconsDoneCallBack : ()->
 			that = @
 			@render()
-			@$('img').load(()->
+			@$el.imagesLoaded(()->
 				that.$el.addClass('active')
 				return
 			)

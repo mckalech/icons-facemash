@@ -5,6 +5,7 @@ require.config
 	    backbone : "../libs/backbone/backbone"
 	    text : "../libs/requirejs-text/text"
 	    handlebars : "../libs/handlebars/handlebars.amd.min"
+	    imagesLoaded : "../libs/imagesloaded/imagesloaded.pkgd.min"
 	shim: 
 		underscore : 
             exports: '_'

@@ -1,5 +1,5 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'text!../../templates/icon.html'], function($, _, Backbone, iconTemplate) {
+  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/icon.html'], function($, _, Backbone, imagesLoaded, iconTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
       el: $('.b-pair'),
@@ -39,7 +39,7 @@
         var that;
         that = this;
         this.render();
-        this.$('img').load(function() {
+        this.$el.imagesLoaded(function() {
           that.$el.addClass('active');
         });
       }
