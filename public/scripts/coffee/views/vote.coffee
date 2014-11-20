@@ -22,7 +22,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				that.$el.html('');
 				that.getIcons()
 				return
-			,500)
+			,300)
 			return
 		getIcons : ()->
 			that = @

@@ -19,7 +19,7 @@ body{
 	z-index: 2;
 	min-width: 700px;
 	min-height: 500px;
-	@include transition( opacity 0.5s linear);
+	@include transition( opacity 300ms linear);
 	opacity: 0;
 
 	&.active{
