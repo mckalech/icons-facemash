@@ -15,7 +15,7 @@
         $stats.hide();
         $pair.show();
         if (voteView) {
-          voteView.reRender();
+          voteView.clearAndGet();
         } else {
           voteView = new VoteView();
         }

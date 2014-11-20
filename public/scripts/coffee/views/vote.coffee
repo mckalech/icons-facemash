@@ -19,10 +19,13 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			that = @
 			@$el.removeClass('active');
 			setTimeout(()->
-				that.$el.html('');
-				that.getIcons()
+				that.clearAndGet()
 				return
 			,300)
+			return
+		clearAndGet : () ->
+			@.$el.html('')
+			@.getIcons()
 			return
 		getIcons : ()->
 			that = @

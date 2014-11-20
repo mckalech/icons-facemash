@@ -23,9 +23,12 @@
         that = this;
         this.$el.removeClass('active');
         setTimeout(function() {
-          that.$el.html('');
-          that.getIcons();
+          that.clearAndGet();
         }, 300);
+      },
+      clearAndGet: function() {
+        this.$el.html('');
+        this.getIcons();
       },
       getIcons: function() {
         var that;

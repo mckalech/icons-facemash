@@ -13,7 +13,7 @@ define ['jquery', 'underscore', 'backbone','views/vote',], ($, _, Backbone, Vote
 			$stats.hide()
 			$pair.show()
 			if voteView
-				voteView.reRender()
+				voteView.clearAndGet()
 			else
 				voteView = new VoteView()
 			return
