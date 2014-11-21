@@ -1,31 +1,35 @@
 define ['jquery', 'underscore', 'backbone','views/vote',], ($, _, Backbone, VoteView) ->
-	$pair = null
 	$stats = null
-	pairClass = '.b-pair'
-	statsClass = '.b-stats'
+	$share = null
 	voteView = null
+	$pages = $('.b-block')
 
 	IconsRouter = Backbone.Router.extend({
 		routes :
 			"" : "index",
 			"stats" : "routeStats"
+			"share" : "routeShare"
 		index : ()->
-			$stats.hide()
-			$pair.show()
-			if voteView
-				voteView.clearAndGet()
-			else
-				voteView = new VoteView()
+			$pages.hide()
+			voteView.$el.show()
+			voteView.clearAndGet()
 			return
 		routeStats : ()->
-			$pair.hide().removeClass('active')
+			$pages.hide()
+			voteView.$el.removeClass('active')
 			$stats.show()
+			return
+		routeShare : ()->
+			$pages.hide()
+			voteView.$el.removeClass('active')
+			$share.show()
 			return
 	})
 	return {
 		init : () -> 
-			$pair = $(pairClass)
-			$stats = $(statsClass)
+			voteView = new VoteView()
+			$stats = $('.b-stats')
+			$share = $('.b-share')
 
 			iconsRouter = new IconsRouter
 			Backbone.history.start()

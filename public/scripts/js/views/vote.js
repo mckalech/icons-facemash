@@ -5,9 +5,7 @@
       url: "http://82.146.46.215:8000/apps/competition/",
       el: $('.b-pair'),
       template: _.template(iconTemplate),
-      initialize: function(options) {
-        this.getIcons();
-      },
+      initialize: function(options) {},
       render: function() {
         var that;
         that = this;

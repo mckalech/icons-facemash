@@ -4,7 +4,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		el : $('.b-pair')
 		template : _.template(iconTemplate)
 		initialize : (options)->
-			@getIcons()
+			#@getIcons()
 			return
 		render : ()->
 			that = @;
