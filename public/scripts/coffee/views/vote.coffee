@@ -1,5 +1,6 @@
 define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/icon.html'], ($, _, Backbone, imagesLoaded, iconTemplate) ->	
 	VoteView = Backbone.View.extend({
+		url : "http://82.146.46.215:8000/apps/competition/"
 		el : $('.b-pair')
 		template : _.template(iconTemplate)
 		initialize : (options)->
@@ -14,7 +15,13 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			);
 			return
 		events : 
-			'click .b-link' : 'reRender'
+			'click .b-link' : 'iconClick'
+		iconClick : (e)->
+			winner = $(e.currentTarget).data('id')
+			data = JSON.stringify({winner:winner})
+			url = 
+			$.post(@url+@currentId+'/',data)
+			@reRender()
 		reRender : ()->
 			that = @
 			@$el.removeClass('active');
@@ -29,11 +36,18 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			return
 		getIcons : ()->
 			that = @
-			$.get('/newcards',(answer)->
-				that.icons = answer.apps
-				that.getIconsDoneCallBack();
-				return
-			)
+			$.ajax({
+				type:"get"
+				cache:false
+				url:that.url
+				success:(answer)->
+					that.icons = answer.apps
+					that.icons[0].side = 'left'
+					that.icons[1].side = 'right'
+					that.currentId = answer.id
+					that.getIconsDoneCallBack();
+					return
+			})
 			return
 		getIconsDoneCallBack : ()->
 			that = @

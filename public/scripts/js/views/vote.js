@@ -2,6 +2,7 @@
   define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/icon.html'], function($, _, Backbone, imagesLoaded, iconTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
+      url: "http://82.146.46.215:8000/apps/competition/",
       el: $('.b-pair'),
       template: _.template(iconTemplate),
       initialize: function(options) {
@@ -16,7 +17,16 @@
         });
       },
       events: {
-        'click .b-link': 'reRender'
+        'click .b-link': 'iconClick'
+      },
+      iconClick: function(e) {
+        var data, url, winner;
+        winner = $(e.currentTarget).data('id');
+        data = JSON.stringify({
+          winner: winner
+        });
+        url = $.post(this.url + this.currentId + '/', data);
+        return this.reRender();
       },
       reRender: function() {
         var that;
@@ -33,9 +43,17 @@
       getIcons: function() {
         var that;
         that = this;
-        $.get('/newcards', function(answer) {
-          that.icons = answer.apps;
-          that.getIconsDoneCallBack();
+        $.ajax({
+          type: "get",
+          cache: false,
+          url: that.url,
+          success: function(answer) {
+            that.icons = answer.apps;
+            that.icons[0].side = 'left';
+            that.icons[1].side = 'right';
+            that.currentId = answer.id;
+            that.getIconsDoneCallBack();
+          }
         });
       },
       getIconsDoneCallBack: function() {
