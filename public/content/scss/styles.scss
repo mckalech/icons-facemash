@@ -25,54 +25,56 @@ body{
 	&.active{
 		opacity: 1;
 	}
-}
-.b-icon{
-	width:50%;
-	height: 100%;
-	position: absolute;
-	top:0;
-	background: #fff;
-	z-index: 3;
-	background-size: cover;
-	background-position: center;
-	@include filter(blur(40px) );
-	@include opacity(0.65);
 
-	&.b-icon_left{
-		left: 0;
-	}
-	&.b-icon_right{
-		right: 0;
-	}
-}
-.b-link{
-	position: absolute;
-	top:50%;
-	width: 300px;
-	z-index: 4;
-	margin-top: -190px;
+	.b-icon{
+		width:50%;
+		height: 100%;
+		position: absolute;
+		top:0;
+		background: #fff;
+		z-index: 3;
+		background-size: cover;
+		background-position: center;
+		@include filter(blur(40px) );
+		@include opacity(0.65);
 
-	&.b-link_left{
-		left:25%;
-		margin-left:-150px;
-	}
-	&.b-link_right{
-		right: 25%;
-		margin-right: -150px;
-	}
-
-	img{
-		display: block;
-		width: 100%;
-		cursor: pointer;
-		@include border-radius(70px);
-		@include filter(drop-shadow(0 3px 4px #000));
-		&:hover{
-			@include filter(drop-shadow(0 7px 9px #000));
+		&.b-icon_left{
+			left: 0;
+		}
+		&.b-icon_right{
+			right: 0;
 		}
 	}
+	.b-link{
+		position: absolute;
+		top:50%;
+		width: 300px;
+		z-index: 4;
+		margin-top: -190px;
 
+		&.b-link_left{
+			left:25%;
+			margin-left:-150px;
+		}
+		&.b-link_right{
+			right: 25%;
+			margin-right: -150px;
+		}
+
+		img{
+			display: block;
+			width: 100%;
+			cursor: pointer;
+			@include border-radius(70px);
+			@include filter(drop-shadow(0 3px 4px #000));
+			&:hover{
+				@include filter(drop-shadow(0 7px 9px #000));
+			}
+		}
+
+	}
 }
+
 
 .b-stats{
 	display: none;
@@ -83,10 +85,18 @@ body{
 }
 .b-share{
 	display: none;
-	height:1300px;
-	width:200px;
-	background: blue;
-	margin: 100px auto;
+	position: absolute;
+	top:0;
+	left:0;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	background: #666;
+
+	img{
+		width: 60px;
+	}
+
 }
 .b-menu{
 	position: fixed;
