@@ -2,6 +2,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 	VoteView = Backbone.View.extend({
 		url : "http://82.146.46.215:8000/apps/competition/"
 		el : $('.b-pair')
+		isBlocked: no
 		template : _.template(iconTemplate)
 		initialize : (options)->
 			#@getIcons()
@@ -17,11 +18,14 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		events : 
 			'click .b-link' : 'iconClick'
 		iconClick : (e)->
-			winner = $(e.currentTarget).data('id')
-			data = JSON.stringify({winner:winner})
-			url = 
-			$.post(@url+@currentId+'/',data)
-			@reRender()
+			if not @isBlocked
+				@isBlocked = yes
+				winner = $(e.currentTarget).data('id')
+				data = JSON.stringify({winner:winner})
+				url = 
+				$.post(@url+@currentId+'/',data)
+				@reRender()
+			return
 		reRender : ()->
 			that = @
 			@$el.removeClass('active');
@@ -54,6 +58,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			@render()
 			@$el.imagesLoaded(()->
 				that.$el.addClass('active')
+				that.isBlocked = no
 				return
 			)
 			return

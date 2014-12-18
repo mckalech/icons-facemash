@@ -4,6 +4,7 @@
     VoteView = Backbone.View.extend({
       url: "http://82.146.46.215:8000/apps/competition/",
       el: $('.b-pair'),
+      isBlocked: false,
       template: _.template(iconTemplate),
       initialize: function(options) {},
       render: function() {
@@ -19,12 +20,15 @@
       },
       iconClick: function(e) {
         var data, url, winner;
-        winner = $(e.currentTarget).data('id');
-        data = JSON.stringify({
-          winner: winner
-        });
-        url = $.post(this.url + this.currentId + '/', data);
-        return this.reRender();
+        if (!this.isBlocked) {
+          this.isBlocked = true;
+          winner = $(e.currentTarget).data('id');
+          data = JSON.stringify({
+            winner: winner
+          });
+          url = $.post(this.url + this.currentId + '/', data);
+          this.reRender();
+        }
       },
       reRender: function() {
         var that;
@@ -60,6 +64,7 @@
         this.render();
         this.$el.imagesLoaded(function() {
           that.$el.addClass('active');
+          that.isBlocked = false;
         });
       }
     });

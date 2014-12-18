@@ -2,12 +2,13 @@
   "name": "static-server",
   "version": "1.0.0",
   "dependencies": {
-    "express": "latest",
     "bower": "latest",
+    "express": "latest",
     "grunt": "^0.4.5",
-    "grunt-contrib-watch": "latest",
+    "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-compass": "latest",
-    "grunt-contrib-coffee": "^0.10.1"
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "latest"
   },
   "scripts": {
     "postinstall": "bower install"
