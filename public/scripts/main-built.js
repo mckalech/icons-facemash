@@ -3433,6 +3433,47 @@ define('text!views/../../templates/icon.html',[],function () { return '<div clas
 }).call(this);
 
 
+define('text!views/../../templates/stats.html',[],function () { return '<div class="b-stats__item">\n\t<img class="b-stats__image" src="<%= image %>" />\n\t<p class="b-stats__name"><%= name %></p>\n\t<span class="b-stats__stat"><%= statistic %></span>\n</div>';});
+
+(function() {
+  define('views/stats',['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/stats.html'], function($, _, Backbone, imagesLoaded, statsTemplate) {
+    var StatsView;
+    StatsView = Backbone.View.extend({
+      url: "http://82.146.46.215:8000/apps/top/",
+      el: $('.b-stats'),
+      template: _.template(statsTemplate),
+      initialize: function(options) {},
+      render: function() {
+        var that;
+        that = this;
+        that.$el.html('');
+        _.each(this.icons, function(item, index) {
+          that.$el.append(that.template(item));
+        });
+      },
+      getStats: function() {
+        var that;
+        that = this;
+        $.ajax({
+          type: "get",
+          cache: false,
+          url: that.url,
+          success: function(answer) {
+            that.icons = answer.apps;
+            that.render();
+            that.$el.imagesLoaded(function() {
+              that.$el.show();
+            });
+          }
+        });
+      }
+    });
+    return StatsView;
+  });
+
+}).call(this);
+
+
 define('text!views/../../templates/share.html',[],function () { return '<img src="<%= image %>" />\n<span><%= name %></span>\n<div><%= statistic %></div>';});
 
 (function() {
@@ -3480,9 +3521,9 @@ define('text!views/../../templates/share.html',[],function () { return '<img src
 }).call(this);
 
 (function() {
-  define('app',['jquery', 'underscore', 'backbone', 'views/vote', 'views/share'], function($, _, Backbone, VoteView, ShareView) {
-    var $pages, $stats, IconsRouter, shareView, voteView;
-    $stats = null;
+  define('app',['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/share'], function($, _, Backbone, VoteView, StatsView, ShareView) {
+    var $pages, IconsRouter, shareView, statsView, voteView;
+    statsView = null;
     shareView = null;
     voteView = null;
     $pages = $('.b-block');
@@ -3500,7 +3541,7 @@ define('text!views/../../templates/share.html',[],function () { return '<img src
       routeStats: function() {
         $pages.hide();
         voteView.$el.removeClass('active');
-        $stats.show();
+        statsView.getStats();
       },
       routeShare: function(name1, name2) {
         $pages.hide();
@@ -3513,7 +3554,7 @@ define('text!views/../../templates/share.html',[],function () { return '<img src
       init: function() {
         var iconsRouter;
         voteView = new VoteView();
-        $stats = $('.b-stats');
+        statsView = new StatsView();
         shareView = new ShareView();
         iconsRouter = new IconsRouter;
         Backbone.history.start();

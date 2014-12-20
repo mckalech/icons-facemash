@@ -4,7 +4,6 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		el : $('.b-share')
 		template : _.template(shareTemplate)
 		initialize : (options)->
-			#@getIcons()
 			return
 		render : ()->
 			that = @;

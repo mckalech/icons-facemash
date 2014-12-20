@@ -78,10 +78,19 @@ body{
 
 .b-stats{
 	display: none;
-	height:1200px;
-	width:300px;
+	padding: 40px;
+	width:400px;
 	background: red;
 	margin: 100px auto;
+	p{
+		margin: 5px 0;
+	}
+}
+.b-stats__item{
+	margin-bottom: 30px;
+}
+.b-stats__image{
+	width: 100px;
 }
 .b-share{
 	display: none;

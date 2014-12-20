@@ -1,5 +1,5 @@
-define ['jquery', 'underscore', 'backbone','views/vote','views/share'], ($, _, Backbone, VoteView, ShareView) ->
-	$stats = null
+define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/share'], ($, _, Backbone, VoteView, StatsView, ShareView) ->
+	statsView = null
 	shareView = null
 	voteView = null
 	$pages = $('.b-block')
@@ -17,7 +17,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/share'], ($, _, B
 		routeStats : ()->
 			$pages.hide()
 			voteView.$el.removeClass('active')
-			$stats.show()
+			statsView.getStats()
 			return
 		routeShare : (name1, name2)->
 			$pages.hide()
@@ -29,7 +29,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/share'], ($, _, B
 	return {
 		init : () -> 
 			voteView = new VoteView()
-			$stats = $('.b-stats')
+			statsView = new StatsView()
 			shareView = new ShareView()
 
 			iconsRouter = new IconsRouter

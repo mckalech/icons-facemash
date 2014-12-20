@@ -1,7 +1,7 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/share'], function($, _, Backbone, VoteView, ShareView) {
-    var $pages, $stats, IconsRouter, shareView, voteView;
-    $stats = null;
+  define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/share'], function($, _, Backbone, VoteView, StatsView, ShareView) {
+    var $pages, IconsRouter, shareView, statsView, voteView;
+    statsView = null;
     shareView = null;
     voteView = null;
     $pages = $('.b-block');
@@ -19,7 +19,7 @@
       routeStats: function() {
         $pages.hide();
         voteView.$el.removeClass('active');
-        $stats.show();
+        statsView.getStats();
       },
       routeShare: function(name1, name2) {
         $pages.hide();
@@ -32,7 +32,7 @@
       init: function() {
         var iconsRouter;
         voteView = new VoteView();
-        $stats = $('.b-stats');
+        statsView = new StatsView();
         shareView = new ShareView();
         iconsRouter = new IconsRouter;
         Backbone.history.start();

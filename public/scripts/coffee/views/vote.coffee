@@ -5,7 +5,6 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		isBlocked: no
 		template : _.template(iconTemplate)
 		initialize : (options)->
-			#@getIcons()
 			return
 		render : ()->
 			that = @;
