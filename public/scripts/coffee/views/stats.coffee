@@ -12,6 +12,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				that.$el.append(that.template(item))  
 				return
 			);
+			that.$el.append($('<div />').addClass('clear'))  
 			return
 		getStats : ()->
 			that = @

@@ -13,11 +13,13 @@
       },
       index: function() {
         $pages.hide();
+        $('body').removeClass('withbg');
         voteView.$el.show();
         voteView.clearAndGet();
       },
       routeStats: function() {
         $pages.hide();
+        $('body').addClass('withbg');
         voteView.$el.removeClass('active');
         statsView.getStats();
       },

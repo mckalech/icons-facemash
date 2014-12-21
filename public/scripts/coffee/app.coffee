@@ -11,11 +11,13 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			"share/:name1/vs/:name2" : "routeShare"
 		index : ()->
 			$pages.hide()
+			$('body').removeClass('withbg')
 			voteView.$el.show()
 			voteView.clearAndGet()
 			return
 		routeStats : ()->
 			$pages.hide()
+			$('body').addClass('withbg')
 			voteView.$el.removeClass('active')
 			statsView.getStats()
 			return

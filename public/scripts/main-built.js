@@ -3433,7 +3433,7 @@ define('text!views/../../templates/icon.html',[],function () { return '<div clas
 }).call(this);
 
 
-define('text!views/../../templates/stats.html',[],function () { return '<div class="b-stats__item">\n\t<img class="b-stats__image" src="<%= image %>" />\n\t<p class="b-stats__name"><%= name %></p>\n\t<span class="b-stats__stat"><%= statistic %></span>\n</div>';});
+define('text!views/../../templates/stats.html',[],function () { return '<div class="b-stats__item">\n\t<div class="b-stats__image">\n\t\t<img src="<%= image %>" />\n\t</div>\n\t<div class="b-stats__info">\n\t\t<div class="b-stats__name"><%= name %></div>\n\t\t<div class="b-stats__artist"><%= artist %></div>\n\t\t<span class="b-stats__stat"><%= parseInt(statistic*100) %>%</span> \n\t</div>\n\t<div class="clear"></div>\n</div>';});
 
 (function() {
   define('views/stats',['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/stats.html'], function($, _, Backbone, imagesLoaded, statsTemplate) {
@@ -3450,6 +3450,7 @@ define('text!views/../../templates/stats.html',[],function () { return '<div cla
         _.each(this.icons, function(item, index) {
           that.$el.append(that.template(item));
         });
+        that.$el.append($('<div />').addClass('clear'));
       },
       getStats: function() {
         var that;
@@ -3535,11 +3536,13 @@ define('text!views/../../templates/share.html',[],function () { return '<img src
       },
       index: function() {
         $pages.hide();
+        $('body').removeClass('withbg');
         voteView.$el.show();
         voteView.clearAndGet();
       },
       routeStats: function() {
         $pages.hide();
+        $('body').addClass('withbg');
         voteView.$el.removeClass('active');
         statsView.getStats();
       },

@@ -1,5 +1,13 @@
 @import "mynormalize";
 @import "compass";
+@mixin sprite($sprite, $name) {
+	background-image: sprite-url($sprite);
+	background-position: sprite-position($sprite, $name);
+	background-repeat: no-repeat; 
+}  
+
+$sprite: sprite-map("sprite/*.png");
+
 
 html{
 	height: 100%;
@@ -7,9 +15,63 @@ html{
 body{
 	min-height: 100%;
 	background: #000;
-	min-width: 700px;
+	min-width: 800px;
+	position: relative;
+	&.withbg{
+		background: url(../img/bg.jpg) no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+	}
 }
 
+.b-menu{
+	position: absolute; 
+	top:20px;
+	right:100px;
+	z-index: 10;
+
+	a{
+		@include inline-block;
+		line-height: 22px;
+		color:rgba(255,255,255,0.8);
+		text-decoration: none;
+		margin-left: 50px;
+		
+
+		&.b-menu__vote{
+
+		}
+		&.b-menu__top{
+			padding-left: 35px;
+			@include sprite($sprite, top); 
+		}
+		&.b-menu__add{
+			padding-left: 30px;
+			@include sprite($sprite, add); 
+		}
+	}
+}
+
+.b-icon{
+	width:50%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	background: #fff;
+	z-index: 3;
+	background-size: cover;
+	background-position: center;
+	@include filter(blur(40px) );
+	@include opacity(0.65);
+
+	&.b-icon_left{
+		left: 0;
+	}
+	&.b-icon_right{
+		right: 0;
+	}
+}
 .b-pair{
 	position: absolute;
 	top:0;
@@ -17,8 +79,8 @@ body{
 	bottom: 0;
 	right: 0;
 	z-index: 2;
-	min-width: 700px;
-	min-height: 500px;
+	min-width: 800px;
+	min-height: 600px;
 	@include transition( opacity 300ms linear);
 	opacity: 0;
 
@@ -26,46 +88,28 @@ body{
 		opacity: 1;
 	}
 
-	.b-icon{
-		width:50%;
-		height: 100%;
-		position: absolute;
-		top:0;
-		background: #fff;
-		z-index: 3;
-		background-size: cover;
-		background-position: center;
-		@include filter(blur(40px) );
-		@include opacity(0.65);
-
-		&.b-icon_left{
-			left: 0;
-		}
-		&.b-icon_right{
-			right: 0;
-		}
-	}
+	
 	.b-link{
 		position: absolute;
 		top:50%;
-		width: 300px;
+		width: 250px;
 		z-index: 4;
-		margin-top: -190px;
+		margin-top: -120px;
 
 		&.b-link_left{
 			left:25%;
-			margin-left:-150px;
+			margin-left:-100px;
 		}
 		&.b-link_right{
 			right: 25%;
-			margin-right: -150px;
+			margin-right: -100px;
 		}
 
 		img{
 			display: block;
 			width: 100%;
 			cursor: pointer;
-			@include border-radius(70px);
+			
 			@include filter(drop-shadow(0 3px 4px #000));
 			&:hover{
 				@include filter(drop-shadow(0 7px 9px #000));
@@ -78,20 +122,75 @@ body{
 
 .b-stats{
 	display: none;
-	padding: 40px;
-	width:400px;
-	background: red;
-	margin: 100px auto;
-	p{
-		margin: 5px 0;
-	}
+	padding: 100px 0 50px;
+	width:800px;
+	margin: auto;
 }
 .b-stats__item{
-	margin-bottom: 30px;
+	margin-bottom: 50px;
+	float: left;
+	width: 50%;
+	box-sizing:border-box;
+	padding-right: 20px;
+	height: 125px;
+	overflow: hidden;
 }
 .b-stats__image{
-	width: 100px;
+	float: left;
+	width:125px;
+	@include border-radius(27px);
+	overflow: hidden;
+	img{
+		display: block;
+		width: 100%;
+	}
 }
+.b-stats__info{
+	margin-left: 150px;
+}
+.b-stats__name{
+	color:#fff;
+	overflow: hidden;
+	max-height: 47px;
+	margin: 15px 0 7px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.b-stats__artist{
+	color:#000;
+	font-size: 13px;
+	margin-bottom: 7px;
+}
+.b-stats__stat{
+	color:#fff;
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.b-stats__item:first-child{
+	width: 100%;
+	height: 250px;
+
+	.b-stats__image{
+		width:250px;
+		@include border-radius(54px);
+	}
+
+	.b-stats__info{
+		margin-left: 300px;
+	}
+
+	.b-stats__name{
+		font-size: 30px;
+		max-height: 74px;
+	}
+
+}
+
+
+
+
 .b-share{
 	display: none;
 	position: absolute;
@@ -106,13 +205,4 @@ body{
 		width: 60px;
 	}
 
-}
-.b-menu{
-	position: fixed;
-	top:20px;
-	left:0;
-	right:0;
-	margin: auto;
-	z-index: 10;
-	width: 200px;
 }

@@ -29,6 +29,8 @@ module.exports = function(grunt) {
 					basePath:'public/content/',
 					sassDir:'scss',
 					cssDir:'css',
+					imagesDir : 'img',
+					httpPath : '/content/',
 					outputStyle:'compressed'
 				}
 			}
@@ -53,7 +55,7 @@ module.exports = function(grunt) {
 				tasks: ['coffee:compile'] // и запускать такую задачу при их изменении
 			},
 			requirejs: {
-				files: 'public/scripts/js/**/*.js', // следить за изменениями любых файлов с разширениями .scss
+				files: ['public/scripts/js/**/*.js', 'public/scripts/**/*.html'], // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['requirejs:compile'] // и запускать такую задачу при их изменении
 			}
 		}

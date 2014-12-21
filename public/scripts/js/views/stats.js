@@ -13,6 +13,7 @@
         _.each(this.icons, function(item, index) {
           that.$el.append(that.template(item));
         });
+        that.$el.append($('<div />').addClass('clear'));
       },
       getStats: function() {
         var that;
