@@ -1,10 +1,11 @@
 (function() {
   define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/share'], function($, _, Backbone, VoteView, StatsView, ShareView) {
-    var $pages, IconsRouter, shareView, statsView, voteView;
+    var $pages, IconsRouter, bindMenuLinks, iconsRouter, shareView, statsView, voteView;
     statsView = null;
     shareView = null;
     voteView = null;
     $pages = $('.b-block');
+    iconsRouter = null;
     IconsRouter = Backbone.Router.extend({
       routes: {
         "": "index",
@@ -30,14 +31,24 @@
         shareView.showShare(name1, name2);
       }
     });
+    bindMenuLinks = function() {
+      $('.b-menu a').on('click', function(e) {
+        e.preventDefault();
+        iconsRouter.navigate($(this).attr('href'), {
+          trigger: true
+        });
+      });
+    };
     return {
       init: function() {
-        var iconsRouter;
         voteView = new VoteView();
         statsView = new StatsView();
         shareView = new ShareView();
         iconsRouter = new IconsRouter;
-        Backbone.history.start();
+        bindMenuLinks();
+        Backbone.history.start({
+          pushState: true
+        });
         return this;
       }
     };

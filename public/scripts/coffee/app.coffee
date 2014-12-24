@@ -3,6 +3,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 	shareView = null
 	voteView = null
 	$pages = $('.b-block')
+	iconsRouter = null
 
 	IconsRouter = Backbone.Router.extend({
 		routes :
@@ -28,6 +29,13 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			shareView.showShare(name1, name2)
 			return
 	})
+	bindMenuLinks = ->
+		$('.b-menu a').on 'click', (e)->
+			e.preventDefault()
+			iconsRouter.navigate($(this).attr('href'),{trigger:true})
+			return
+		return
+
 	return {
 		init : () -> 
 			voteView = new VoteView()
@@ -35,7 +43,8 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			shareView = new ShareView()
 
 			iconsRouter = new IconsRouter
-			Backbone.history.start()
+			bindMenuLinks()
+			Backbone.history.start({pushState: true})
 			return @
 	}
 
