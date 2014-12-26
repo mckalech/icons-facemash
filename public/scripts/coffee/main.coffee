@@ -17,7 +17,7 @@ require.config
 
 require ['jquery', 'app'], ($ , app) ->
 	$ ->
-		app.init()
+		app.init() 
 	@
 
 

@@ -6,18 +6,11 @@ module.exports = function(grunt) {
 			compile: {
 				options: {
 					baseUrl: "./public/scripts/js",
-				    paths:{
-				    	underscore : "libs/underscore/underscore",
-					    jquery : "libs/jquery/dist/jquery.min",
-					    backbone : "libs/backbone/backbone",
-					    text : "libs/requirejs-text/text",
-					    handlebars : "libs/handlebars/handlebars.amd.min",
-					    imagesLoaded : "libs/imagesloaded/imagesloaded.pkgd.min",
-				    },
+					mainConfigFile:"./public/scripts/js/main.js",
 				    name: "main",
 				    out: "./public/scripts/main-built.js",
 				    preserveLicenseComments: false,
-				    optimize:'none',
+				    optimize:'uglify2',
 				    generateSourceMaps: true
 				}
 			}
