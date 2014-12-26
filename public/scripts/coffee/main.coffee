@@ -5,8 +5,8 @@ require.config
 	    jquery : "libs/jquery/dist/jquery.min"
 	    backbone : "libs/backbone/backbone"
 	    text : "libs/requirejs-text/text"
-	    handlebars : "js/libs/handlebars/handlebars.amd.min"
-	    imagesLoaded : "js/libs/imagesloaded/imagesloaded.pkgd.min"
+	    handlebars : "libs/handlebars/handlebars.amd.min"
+	    imagesLoaded : "libs/imagesloaded/imagesloaded.pkgd.min"
 	shim: 
 		underscore : 
             exports: '_'
