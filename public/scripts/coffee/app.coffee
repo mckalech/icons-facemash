@@ -12,18 +12,21 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			"share/:name1/vs/:name2" : "routeShare"
 		index : ()->
 			$pages.hide()
-			$('body').removeClass('withbg')
+			$('body').removeClass('body_black')
+			shareView.$el.removeClass('active')
 			voteView.$el.show()
 			voteView.clearAndGet()
 			return
 		routeStats : ()->
 			$pages.hide()
-			$('body').addClass('withbg')
+			$('body').addClass('body_black')
 			voteView.$el.removeClass('active')
+			shareView.$el.removeClass('active')
 			statsView.getStats()
 			return
 		routeShare : (name1, name2)->
 			$pages.hide()
+			$('body').addClass('body_black')
 			voteView.$el.removeClass('active')
 			shareView.$el.show()
 			shareView.showShare(name1, name2)
@@ -31,8 +34,8 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 	})
 	bindMenuLinks = ->
 		$('.b-menu a').on 'click', (e)->
-			e.preventDefault()
-			iconsRouter.navigate($(this).attr('href'),{trigger:true})
+			#e.preventDefault()
+			#iconsRouter.navigate($(this).attr('href'),{trigger:true})
 			return
 		return
 
@@ -44,7 +47,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 
 			iconsRouter = new IconsRouter
 			bindMenuLinks()
-			Backbone.history.start({pushState: true})
+			Backbone.history.start()
 			return @
 	}
 

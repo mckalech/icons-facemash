@@ -24,7 +24,9 @@
           url: url,
           success: function(answer) {
             that.icons = answer.apps;
-            that.render();
+            that.icons[0].side = 'left';
+            that.icons[1].side = 'right';
+            that.getIconsDoneCallBack();
           }
         });
       },

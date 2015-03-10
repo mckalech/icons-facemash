@@ -14,30 +14,28 @@
       },
       index: function() {
         $pages.hide();
-        $('body').removeClass('withbg');
+        $('body').removeClass('body_black');
+        shareView.$el.removeClass('active');
         voteView.$el.show();
         voteView.clearAndGet();
       },
       routeStats: function() {
         $pages.hide();
-        $('body').addClass('withbg');
+        $('body').addClass('body_black');
         voteView.$el.removeClass('active');
+        shareView.$el.removeClass('active');
         statsView.getStats();
       },
       routeShare: function(name1, name2) {
         $pages.hide();
+        $('body').addClass('body_black');
         voteView.$el.removeClass('active');
         shareView.$el.show();
         shareView.showShare(name1, name2);
       }
     });
     bindMenuLinks = function() {
-      $('.b-menu a').on('click', function(e) {
-        e.preventDefault();
-        iconsRouter.navigate($(this).attr('href'), {
-          trigger: true
-        });
-      });
+      $('.b-menu a').on('click', function(e) {});
     };
     return {
       init: function() {
@@ -46,9 +44,7 @@
         shareView = new ShareView();
         iconsRouter = new IconsRouter;
         bindMenuLinks();
-        Backbone.history.start({
-          pushState: true
-        });
+        Backbone.history.start();
         return this;
       }
     };
