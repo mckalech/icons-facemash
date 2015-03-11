@@ -1,6 +1,6 @@
 (function() {
   define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/share'], function($, _, Backbone, VoteView, StatsView, ShareView) {
-    var $pages, IconsRouter, bindMenuLinks, iconsRouter, shareView, statsView, voteView;
+    var $pages, IconsRouter, iconsRouter, routeAdditional, shareView, statsView, voteView;
     statsView = null;
     shareView = null;
     voteView = null;
@@ -13,29 +13,26 @@
         "share/:name1/vs/:name2": "routeShare"
       },
       index: function() {
-        $pages.hide();
-        $('body').removeClass('body_black');
-        shareView.$el.removeClass('active');
-        voteView.$el.show();
+        routeAdditional(voteView, false);
         voteView.clearAndGet();
       },
       routeStats: function() {
-        $pages.hide();
-        $('body').addClass('body_black');
-        voteView.$el.removeClass('active');
-        shareView.$el.removeClass('active');
+        routeAdditional(statsView, true);
         statsView.getStats();
       },
       routeShare: function(name1, name2) {
-        $pages.hide();
-        $('body').addClass('body_black');
-        voteView.$el.removeClass('active');
-        shareView.$el.show();
+        routeAdditional(shareView, true);
         shareView.showShare(name1, name2);
       }
     });
-    bindMenuLinks = function() {
-      $('.b-menu a').on('click', function(e) {});
+    routeAdditional = function(view, black) {
+      $pages.hide().removeClass('active');
+      if (black) {
+        $('body').addClass('body_black');
+      } else {
+        $('body').removeClass('body_black');
+      }
+      view.$el.show();
     };
     return {
       init: function() {
@@ -43,7 +40,6 @@
         statsView = new StatsView();
         shareView = new ShareView();
         iconsRouter = new IconsRouter;
-        bindMenuLinks();
         Backbone.history.start();
         return this;
       }

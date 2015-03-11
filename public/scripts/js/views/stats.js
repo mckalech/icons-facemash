@@ -26,7 +26,7 @@
             that.icons = answer.apps;
             that.render();
             that.$el.imagesLoaded(function() {
-              that.$el.show();
+              that.$el.addClass('active');
             });
           }
         });

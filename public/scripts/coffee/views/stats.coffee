@@ -24,7 +24,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 					that.icons = answer.apps
 					that.render()
 					that.$el.imagesLoaded(()->
-						that.$el.show()
+						that.$el.addClass('active')
 						return
 					)
 					return

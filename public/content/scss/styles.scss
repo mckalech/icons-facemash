@@ -19,7 +19,14 @@ body{
 	position: relative;
 	font-family: 'Open Sans';
 }
+.b-block{
+	@include transition( opacity 300ms linear);
+	opacity: 0;
 
+	&.active{
+		opacity: 1;
+	}
+}
 .b-header{
 	position: fixed; 
 	top: 0;
@@ -70,12 +77,7 @@ body{
 	z-index: 2;
 	min-width: 800px;
 	min-height: 600px;
-	@include transition( opacity 300ms linear);
-	opacity: 0;
-
-	&.active{
-		opacity: 1;
-	}
+	
 
 }
 .b-icon{
@@ -199,8 +201,6 @@ body{
 }
 
 
-
-
 .b-share{
 	display: none;
 	position: absolute;
@@ -209,10 +209,4 @@ body{
 	bottom: 0;
 	right: 0;
 	z-index: 2;
-	@include transition( opacity 300ms linear);
-	opacity: 0;
-
-	&.active{
-		opacity: 1;
-	}
 }
