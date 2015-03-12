@@ -100,7 +100,7 @@ body{
 	background-size: cover;
 	background-position: center;
 	@include filter(blur(45px) );
-	@include opacity(0.17);
+	@include opacity(0.18);
 
 	&.b-icon_left{
 		left: 0;
@@ -126,7 +126,7 @@ body{
 	z-index: 5;
 	margin-left: -2px;
 	height: 30px;
-	margin-top: -10px;
+	margin-top: -20px;
 	i{
 		position: absolute;
 		bottom:0;
@@ -147,11 +147,11 @@ body{
 	z-index: 5;
 	margin-top: -140px;
 
-	&.b-link_left{
+	&_left{
 		right:53%;
-
+		text-align: right;
 	}
-	&.b-link_right{
+	&_right{
 		left:53%;
 	}
 
@@ -169,19 +169,48 @@ body{
 	}
 
 }
+.b-link__info{
+	display: none;
+	position: absolute;
+	top:40%;
+	&_active{
+		display: block;
+	}
+	.b-link_left &{
+		right:280px;
+	}
+	.b-link_right &{
+		left:280px;
+	}
+}
+.b-link__name{
+	font-size: 16px;
+	color:#fff;
+	font-weight: bold;
+	max-width: 250px;
+	height: 25px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+.b-link__stats{
+	font-size: 48px;
+	color:#fff;
+}
 .b-pair-share{
 	position: absolute;
 	top:50%;
 	left:50%;
 	margin-left: -60px;
 	width: 130px;
-	z-index: 20;
+	z-index: 5;
 	margin-top: 210px;
 	text-align: center;
 }
 .b-pair-share__text{
 	font-size: 16px;
 	color:#565656;
+	@include opacity(0.5);
 	padding-bottom: 12px;
 	@include inline-block;
 }
@@ -200,6 +229,15 @@ body{
 		width:33px;
 		height: 26px;
 	}
+}
+
+.b-pair-stats-switcher{
+	position: absolute;
+	bottom:10%;
+	left:10%;
+	z-index: 5;
+	cursor: pointer;
+	@include user-select(none);
 }
 /*----------------------------------STATS--------------------------------*/
 .b-stats{

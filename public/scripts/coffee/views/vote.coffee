@@ -3,6 +3,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		url : "http://82.146.46.215:8000/apps/competition/"
 		el : $('.b-pair')
 		isBlocked: no
+		statsShown: no
 		template : _.template(iconTemplate)
 		initialize : (options)->
 			return
@@ -13,14 +14,22 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			return
 		events : 
 			'click .b-link img' : 'iconClick'
+			'click .b-pair-stats-switcher' : 'switchStats'
 		iconClick : (e)->
 			if not @isBlocked
 				@isBlocked = yes
 				winner = $(e.currentTarget).data('id')
 				data = JSON.stringify({winner:winner})
-				url = 
-				$.post(@url+@currentId+'/',data)
 				@reRender()
+				$.post(@url+@currentId+'/',data)
+			return
+		switchStats : (e)->
+			if @statsShown
+				@$('.b-link__info').removeClass('b-link__info_active')
+				@statsShown = not @statsShown
+			else
+				@$('.b-link__info').addClass('b-link__info_active')
+				@statsShown = not @statsShown
 			return
 		reRender : ()->
 			that = @
@@ -31,8 +40,8 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			,300)
 			return
 		clearAndGet : () ->
-			@.$el.html('')
-			@.getIcons()
+			@$el.html('')
+			@getIcons()
 			return
 		getIcons : ()->
 			that = @
@@ -53,6 +62,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			@$el.imagesLoaded(()->
 				that.$el.addClass('active')
 				that.isBlocked = no
+				that.statsShown = no
 				return
 			)
 			return

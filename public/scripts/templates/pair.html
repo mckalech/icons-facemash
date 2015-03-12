@@ -2,13 +2,19 @@
 <div class="b-icon b-icon_left" style="background-image:url(<%= icons[0].image %>)"></div>
 <div class="b-link b-link_left" data-id="<%= icons[0].id %>">
 	<img src="<%= icons[0].image %>" />
-	<span class="b-link__name"><%= icons[0].name %></span>
+	<div class="b-link__info">
+		<div class="b-link__stats"><%= parseInt(icons[0].statistic*100) %>%</div>
+		<div class="b-link__name"><%= icons[0].name %></div>
+	</div>
 </div>
 <div class="b-dots"><i></i><i></i></div>
 <div class="b-icon b-icon_right" style="background-image:url(<%= icons[1].image %>)"></div>
 <div class="b-link b-link_right" data-id="<%= icons[1].id %>">
 	<img src="<%= icons[1].image %>" />
-	<span class="b-link__name"><%= icons[1].name %></span>
+	<div class="b-link__info">
+		<div class="b-link__stats"><%= parseInt(icons[1].statistic*100) %>%</div>
+		<div class="b-link__name"><%= icons[1].name %></div>
+	</div>
 </div>
 
 <div class="b-pair-share">
@@ -16,4 +22,4 @@
 	<span class="b-pair-share__link b-pair-share__link_fb"></span>
 	<span class="b-pair-share__link b-pair-share__link_tw"></span>
 </div>
-
+<div class="b-pair-stats-switcher">switch</div>
