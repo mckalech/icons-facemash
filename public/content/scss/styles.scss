@@ -42,7 +42,6 @@ body{
 	a{
 		@include inline-block;
 		line-height: 22px;
-		color:rgba(255,255,255,0.8);
 		text-decoration: none;
 		font-size: 13px;
 		color:#565656;
@@ -62,12 +61,23 @@ body{
 	top: 30px;
 	a{
 		margin: 0 25px;
-
-		&.b-menu__add{
-			//@include sprite($sprite, add); 
-		}
 	}
 }
+
+/*----------------------------------SHARE--------------------------------*/
+.b-share{
+	display: none;
+	position: absolute;
+	top:0;
+	left:0;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	min-width: 800px;
+	min-height: 700px;
+}
+
+/*----------------------------------PAIR--------------------------------*/
 .b-pair{
 	position: absolute;
 	top:0;
@@ -76,7 +86,7 @@ body{
 	right: 0;
 	z-index: 2;
 	min-width: 800px;
-	min-height: 600px;
+	min-height: 700px;
 	
 
 }
@@ -99,22 +109,50 @@ body{
 		right: 0;
 	}
 }
-
-
+.b-pair-bg{
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 4;
+	background: url(../img/noise.png);
+}
+.b-dots{
+	width:4px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	z-index: 5;
+	margin-left: -2px;
+	height: 30px;
+	margin-top: -10px;
+	i{
+		position: absolute;
+		bottom:0;
+		left: 0;
+		width: 100%;
+		height:4px;
+		background: #fff;
+		&:first-child{
+			bottom: auto;
+			top:0;
+		}
+	}
+}
 .b-link{
 	position: absolute;
 	top:50%;
 	width: 250px;
-	z-index: 4;
-	margin-top: -120px;
+	z-index: 5;
+	margin-top: -140px;
 
 	&.b-link_left{
-		left:25%;
-		margin-left:-100px;
+		right:53%;
+
 	}
 	&.b-link_right{
-		right: 25%;
-		margin-right: -100px;
+		left:53%;
 	}
 
 	img{
@@ -131,7 +169,39 @@ body{
 	}
 
 }
-
+.b-pair-share{
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-left: -60px;
+	width: 130px;
+	z-index: 20;
+	margin-top: 210px;
+	text-align: center;
+}
+.b-pair-share__text{
+	font-size: 16px;
+	color:#565656;
+	padding-bottom: 12px;
+	@include inline-block;
+}
+.b-pair-share__link{
+	height: 30px;
+	@include inline-block;
+	cursor: pointer;
+	&_fb{
+		@include sprite($sprite, share-pair-fb); 
+		width:15px;
+		height: 28px;
+		margin-right: 30px;
+	}
+	&_tw{
+		@include sprite($sprite, share-pair-tw); 
+		width:33px;
+		height: 26px;
+	}
+}
+/*----------------------------------STATS--------------------------------*/
 .b-stats{
 	display: none;
 	padding: 100px 0 50px;
@@ -201,12 +271,4 @@ body{
 }
 
 
-.b-share{
-	display: none;
-	position: absolute;
-	top:0;
-	left:0;
-	bottom: 0;
-	right: 0;
-	z-index: 2;
-}
+

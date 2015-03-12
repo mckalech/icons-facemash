@@ -8,7 +8,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 	IconsRouter = Backbone.Router.extend({
 		routes :
 			"" : "index",
-			"stats" : "routeStats"
+			"top" : "routeStats"
 			"share/:name1/vs/:name2" : "routeShare"
 		index : ()->
 			routeAdditional(voteView, false)
@@ -23,7 +23,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			shareView.showShare(name1, name2)
 			return
 	})
-	
+
 	routeAdditional = (view, black) ->
 		$pages.hide().removeClass('active')
 		if black

@@ -1,5 +1,5 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/share.html'], function($, _, Backbone, imagesLoaded, shareTemplate) {
+  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/pair.html'], function($, _, Backbone, imagesLoaded, shareTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
       url: "http://82.146.46.215:8000/apps/share/",
@@ -10,9 +10,9 @@
         var that;
         that = this;
         that.$el.html('');
-        _.each(this.icons, function(item, index) {
-          that.$el.append(that.template(item));
-        });
+        that.$el.append(that.template({
+          icons: this.icons
+        }));
       },
       showShare: function(name1, name2) {
         var that, url;
@@ -24,8 +24,6 @@
           url: url,
           success: function(answer) {
             that.icons = answer.apps;
-            that.icons[0].side = 'left';
-            that.icons[1].side = 'right';
             that.getIconsDoneCallBack();
           }
         });

@@ -1,4 +1,4 @@
-define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/share.html'], ($, _, Backbone, imagesLoaded, shareTemplate) ->	
+define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/pair.html'], ($, _, Backbone, imagesLoaded, shareTemplate) ->	
 	VoteView = Backbone.View.extend({
 		url : "http://82.146.46.215:8000/apps/share/"
 		el : $('.b-share')
@@ -8,10 +8,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		render : ()->
 			that = @;
 			that.$el.html('');
-			_.each(@icons, (item,index) ->
-				that.$el.append(that.template(item))  
-				return
-			);
+			that.$el.append(that.template({icons:@icons}))  
 			return
 
 		showShare : (name1, name2)->
@@ -23,8 +20,6 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				url:url
 				success:(answer)->
 					that.icons = answer.apps
-					that.icons[0].side = 'left'
-					that.icons[1].side = 'right'
 					that.getIconsDoneCallBack()
 					return
 			})

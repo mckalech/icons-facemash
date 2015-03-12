@@ -9,7 +9,7 @@
     IconsRouter = Backbone.Router.extend({
       routes: {
         "": "index",
-        "stats": "routeStats",
+        "top": "routeStats",
         "share/:name1/vs/:name2": "routeShare"
       },
       index: function() {

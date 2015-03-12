@@ -1,4 +1,4 @@
-define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/icon.html'], ($, _, Backbone, imagesLoaded, iconTemplate) ->	
+define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/pair.html'], ($, _, Backbone, imagesLoaded, iconTemplate) ->	
 	VoteView = Backbone.View.extend({
 		url : "http://82.146.46.215:8000/apps/competition/"
 		el : $('.b-pair')
@@ -9,13 +9,10 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		render : ()->
 			that = @;
 			that.$el.html('');
-			_.each(@icons, (item,index) ->
-				that.$el.append(that.template(item))  
-				return
-			);
+			that.$el.append(that.template({icons:@icons}))  
 			return
 		events : 
-			'click .b-link' : 'iconClick'
+			'click .b-link img' : 'iconClick'
 		iconClick : (e)->
 			if not @isBlocked
 				@isBlocked = yes
@@ -45,8 +42,6 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				url:that.url
 				success:(answer)->
 					that.icons = answer.apps
-					that.icons[0].side = 'left'
-					that.icons[1].side = 'right'
 					that.currentId = answer.id
 					that.getIconsDoneCallBack();
 					return

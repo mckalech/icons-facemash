@@ -1,5 +1,5 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/icon.html'], function($, _, Backbone, imagesLoaded, iconTemplate) {
+  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/pair.html'], function($, _, Backbone, imagesLoaded, iconTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
       url: "http://82.146.46.215:8000/apps/competition/",
@@ -11,12 +11,12 @@
         var that;
         that = this;
         that.$el.html('');
-        _.each(this.icons, function(item, index) {
-          that.$el.append(that.template(item));
-        });
+        that.$el.append(that.template({
+          icons: this.icons
+        }));
       },
       events: {
-        'click .b-link': 'iconClick'
+        'click .b-link img': 'iconClick'
       },
       iconClick: function(e) {
         var data, url, winner;
@@ -51,8 +51,6 @@
           url: that.url,
           success: function(answer) {
             that.icons = answer.apps;
-            that.icons[0].side = 'left';
-            that.icons[1].side = 'right';
             that.currentId = answer.id;
             that.getIconsDoneCallBack();
           }
