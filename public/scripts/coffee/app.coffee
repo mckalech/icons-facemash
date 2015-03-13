@@ -1,8 +1,9 @@
-define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared','views/header'], ($, _, Backbone, VoteView, StatsView, SharedView, HeaderView) ->
+define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared', 'views/about','views/header'], ($, _, Backbone, VoteView, StatsView, SharedView, AboutView, HeaderView) ->
 	statsView = null
 	sharedView = null
 	voteView = null
 	headerView = null
+	aboutView = null
 	$pages = $('.b-block')
 	iconsRouter = null
 
@@ -11,6 +12,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			"" : "index",
 			"top" : "routeStats"
 			"share/:name1/vs/:name2" : "routeShare"
+			"about": "routeAbout"
 		index : ()->
 			routeAdditional(voteView, {black:off})
 			voteView.clearAndGet()
@@ -22,6 +24,10 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 		routeShare : (name1, name2)->
 			routeAdditional(sharedView, {active:'logo',black:on})
 			sharedView.showShare(name1, name2)
+			return
+		routeAbout : () ->
+			routeAdditional(aboutView, {active:'about',black:on})
+			aboutView.showAbout()
 			return
 	})
 
@@ -36,6 +42,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			voteView = new VoteView()
 			statsView = new StatsView()
 			sharedView = new SharedView()
+			aboutView = new AboutView()
 			headerView = new HeaderView()
 
 			iconsRouter = new IconsRouter
