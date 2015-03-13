@@ -35,7 +35,7 @@ body{
 	padding: 30px 70px;
 	background: rgba(0,0,0,0.1);
 	z-index: 10;
-	.body_black &{
+	&_black{
 		background: #0a0b0c;
 	}
 
@@ -50,7 +50,9 @@ body{
 		letter-spacing: 1.5px;
 	}
 }
-
+a.b-header__logo_active{
+	color:#fff;
+}
 .b-menu{
 	width: 500px;
 	margin: auto;
@@ -61,6 +63,9 @@ body{
 	top: 30px;
 	a{
 		margin: 0 25px;
+	}
+	.b-menu__item_active{
+		color:#fff;
 	}
 }
 

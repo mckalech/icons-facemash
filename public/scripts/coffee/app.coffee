@@ -1,7 +1,8 @@
-define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared'], ($, _, Backbone, VoteView, StatsView, SharedView) ->
+define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared','views/header'], ($, _, Backbone, VoteView, StatsView, SharedView, HeaderView) ->
 	statsView = null
 	sharedView = null
 	voteView = null
+	headerView = null
 	$pages = $('.b-block')
 	iconsRouter = null
 
@@ -11,25 +12,22 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			"top" : "routeStats"
 			"share/:name1/vs/:name2" : "routeShare"
 		index : ()->
-			routeAdditional(voteView, false)
+			routeAdditional(voteView, {black:off})
 			voteView.clearAndGet()
 			return
 		routeStats : ()->
-			routeAdditional(statsView, true)
+			routeAdditional(statsView, {active:'top', black:on})
 			statsView.getStats()
 			return
 		routeShare : (name1, name2)->
-			routeAdditional(sharedView, true)
+			routeAdditional(sharedView, {active:'logo',black:on})
 			sharedView.showShare(name1, name2)
 			return
 	})
 
-	routeAdditional = (view, black) ->
+	routeAdditional = (view, headerOptions) ->
 		$pages.hide().removeClass('active')
-		if black
-			$('body').addClass('body_black')
-		else
-			$('body').removeClass('body_black')
+		headerView.render(headerOptions)
 		view.$el.show()
 		return
 
@@ -38,6 +36,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			voteView = new VoteView()
 			statsView = new StatsView()
 			sharedView = new SharedView()
+			headerView = new HeaderView()
 
 			iconsRouter = new IconsRouter
 			Backbone.history.start()
