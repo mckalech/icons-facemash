@@ -1,5 +1,5 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/pair.html'], function($, _, Backbone, imagesLoaded, iconTemplate) {
+  define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'utils/share', 'text!../../templates/pair.html'], function($, _, Backbone, imagesLoaded, shareUtils, iconTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
       url: "http://82.146.46.215:8000/apps/competition/",
@@ -18,6 +18,7 @@
       },
       events: {
         'click .b-link img': 'iconClick',
+        'click .b-pair-share__link': 'share',
         'click .b-pair-stats-switcher': 'switchStats'
       },
       iconClick: function(e) {
@@ -31,6 +32,12 @@
           this.reRender();
           $.post(this.url + this.currentId + '/', data);
         }
+      },
+      share: function(e) {
+        var type, url;
+        type = $(e.currentTarget).data('type');
+        url = "" + location.origin + "/#share/" + this.icons[0].slug + "/vs/" + this.icons[1].slug;
+        shareUtils[type](url, this.sharePhrase);
       },
       switchStats: function(e) {
         if (this.statsShown) {
@@ -65,6 +72,7 @@
           success: function(answer) {
             that.icons = answer.apps;
             that.currentId = answer.id;
+            that.sharePhrase = answer.phrase;
             that.getIconsDoneCallBack();
           }
         });

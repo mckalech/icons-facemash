@@ -1,4 +1,4 @@
-define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/pair.html'], ($, _, Backbone, imagesLoaded, iconTemplate) ->	
+define ['jquery', 'underscore', 'backbone', 'imagesLoaded','utils/share' ,'text!../../templates/pair.html'], ($, _, Backbone, imagesLoaded, shareUtils, iconTemplate) ->	
 	VoteView = Backbone.View.extend({
 		url : "http://82.146.46.215:8000/apps/competition/"
 		el : $('.b-pair')
@@ -14,6 +14,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 			return
 		events : 
 			'click .b-link img' : 'iconClick'
+			'click .b-pair-share__link': 'share'
 			'click .b-pair-stats-switcher' : 'switchStats'
 		iconClick : (e)->
 			if not @isBlocked
@@ -22,6 +23,11 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				data = JSON.stringify({winner:winner})
 				@reRender()
 				$.post(@url+@currentId+'/',data)
+			return
+		share : (e)->
+			type = $(e.currentTarget).data('type')
+			url = "#{location.origin}/#share/#{@icons[0].slug}/vs/#{@icons[1].slug}"
+			shareUtils[type](url, @sharePhrase)
 			return
 		switchStats : (e)->
 			if @statsShown
@@ -54,6 +60,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				success:(answer)->
 					that.icons = answer.apps
 					that.currentId = answer.id
+					that.sharePhrase = answer.phrase
 					that.getIconsDoneCallBack();
 					return
 			})

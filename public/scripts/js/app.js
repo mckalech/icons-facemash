@@ -1,8 +1,8 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/share'], function($, _, Backbone, VoteView, StatsView, ShareView) {
-    var $pages, IconsRouter, iconsRouter, routeAdditional, shareView, statsView, voteView;
+  define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/shared'], function($, _, Backbone, VoteView, StatsView, SharedView) {
+    var $pages, IconsRouter, iconsRouter, routeAdditional, sharedView, statsView, voteView;
     statsView = null;
-    shareView = null;
+    sharedView = null;
     voteView = null;
     $pages = $('.b-block');
     iconsRouter = null;
@@ -21,8 +21,8 @@
         statsView.getStats();
       },
       routeShare: function(name1, name2) {
-        routeAdditional(shareView, true);
-        shareView.showShare(name1, name2);
+        routeAdditional(sharedView, true);
+        sharedView.showShare(name1, name2);
       }
     });
     routeAdditional = function(view, black) {
@@ -38,7 +38,7 @@
       init: function() {
         voteView = new VoteView();
         statsView = new StatsView();
-        shareView = new ShareView();
+        sharedView = new SharedView();
         iconsRouter = new IconsRouter;
         Backbone.history.start();
         return this;
