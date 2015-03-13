@@ -26,9 +26,11 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		switchStats : (e)->
 			if @statsShown
 				@$('.b-link__info').removeClass('b-link__info_active')
+				@$('.b-pair-stats-switcher').removeClass('b-pair-stats-switcher_active')
 				@statsShown = not @statsShown
 			else
 				@$('.b-link__info').addClass('b-link__info_active')
+				@$('.b-pair-stats-switcher').addClass('b-pair-stats-switcher_active')
 				@statsShown = not @statsShown
 			return
 		reRender : ()->

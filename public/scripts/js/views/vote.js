@@ -35,9 +35,11 @@
       switchStats: function(e) {
         if (this.statsShown) {
           this.$('.b-link__info').removeClass('b-link__info_active');
+          this.$('.b-pair-stats-switcher').removeClass('b-pair-stats-switcher_active');
           this.statsShown = !this.statsShown;
         } else {
           this.$('.b-link__info').addClass('b-link__info_active');
+          this.$('.b-pair-stats-switcher').addClass('b-pair-stats-switcher_active');
           this.statsShown = !this.statsShown;
         }
       },

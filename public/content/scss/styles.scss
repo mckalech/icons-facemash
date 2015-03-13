@@ -209,8 +209,7 @@ body{
 }
 .b-pair-share__text{
 	font-size: 16px;
-	color:#565656;
-	@include opacity(0.5);
+	color:rgba(86,86,86,0.5);
 	padding-bottom: 12px;
 	@include inline-block;
 }
@@ -234,10 +233,42 @@ body{
 .b-pair-stats-switcher{
 	position: absolute;
 	bottom:10%;
-	left:10%;
+	left:70px;
 	z-index: 5;
 	cursor: pointer;
 	@include user-select(none);
+	font-size: 15px;
+}
+.b-pair-stats-switcher{
+	line-height: 31px;
+	color:rgba(86,86,86,0.5);
+	&_active{
+		.b-pair-stats-switcher__text_show{
+			display: none;
+		}
+		.b-pair-stats-switcher__text_hide{
+			display: block;
+		}
+	}
+}
+.b-pair-stats-switcher__text{
+	i{
+		@include inline-block;
+		width: 31px;
+		height: 31px;
+		margin-right: 7px;
+	}
+	&_show{
+		i{
+			@include sprite($sprite, show-stats); 
+		}
+	}
+	&_hide{
+		display: none;
+		i{
+			@include sprite($sprite, hide-stats); 
+		}
+	}
 }
 /*----------------------------------STATS--------------------------------*/
 .b-stats{
