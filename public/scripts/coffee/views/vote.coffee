@@ -27,7 +27,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded','utils/share' ,'text!
 		share : (e)->
 			type = $(e.currentTarget).data('type')
 			url = "#{location.origin}/#share/#{@icons[0].slug}/vs/#{@icons[1].slug}"
-			shareUtils[type](url, @sharePhrase)
+			shareUtils[type](url, @sharePhrase, @sharePhrase)
 			return
 		switchStats : (e)->
 			if @statsShown

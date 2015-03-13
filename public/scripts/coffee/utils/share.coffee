@@ -1,6 +1,6 @@
 define ['jquery'], ($) ->	
 	ShareUtil = 
-	    fb: (purl, ptitle, pimg, text) ->
+	    fb: (purl, ptitle, text, pimg) ->
 	        url = null
 	        url  = 'https://www.facebook.com/sharer/sharer.php?s=100';
 	        url += '&p[url]='       + encodeURIComponent(purl);

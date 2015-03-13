@@ -2,7 +2,7 @@
   define(['jquery'], function($) {
     var ShareUtil;
     ShareUtil = {
-      fb: function(purl, ptitle, pimg, text) {
+      fb: function(purl, ptitle, text, pimg) {
         var url;
         url = null;
         url = 'https://www.facebook.com/sharer/sharer.php?s=100';

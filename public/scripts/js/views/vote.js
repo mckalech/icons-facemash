@@ -37,7 +37,7 @@
         var type, url;
         type = $(e.currentTarget).data('type');
         url = "" + location.origin + "/#share/" + this.icons[0].slug + "/vs/" + this.icons[1].slug;
-        shareUtils[type](url, this.sharePhrase);
+        shareUtils[type](url, this.sharePhrase, this.sharePhrase);
       },
       switchStats: function(e) {
         if (this.statsShown) {
