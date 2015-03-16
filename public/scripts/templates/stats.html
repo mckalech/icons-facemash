@@ -1,11 +1,20 @@
-<div class="b-stats__item">
-	<div class="b-stats__image">
-		<img src="<%= image %>" />
-	</div>
-	<div class="b-stats__info">
-		<div class="b-stats__name"><%= name %></div>
-		<div class="b-stats__artist"><%= artist %></div>
-		<span class="b-stats__stat"><%= parseInt(statistic*100) %>%</span> 
-	</div>
-	<div class="clear"></div>
+<div class="b-stats__title">
+	<h1>BEST ICONS ever</h1>
+	<span>We want to find the best app icons and figure out why it’s the best.</span>
+</div>
+<div class="b-stats__list">
+	<% var i = 0; %>
+	<% for (;i<icons.length;i++) {%>
+		<div class="b-stats__item">
+			<div class="b-stats__pos"><%= i+1 %></div>
+			<div class="b-stats__image">
+				<img src="<%= icons[i].image %>" />
+			</div>
+			<div class="b-stats__info">
+				<div class="b-stats__name"><%= icons[i].name %></div>
+				<div class="b-stats__artist"><%= icons[i].artist %></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<% } %>
 </div>

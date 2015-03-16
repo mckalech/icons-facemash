@@ -1,6 +1,6 @@
 @import "mynormalize";
 @import "compass";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
 @mixin sprite($sprite, $name) {
 	background-image: sprite-url($sprite);
 	background-position: sprite-position($sprite, $name);
@@ -278,71 +278,81 @@ a.b-header__logo_active{
 /*----------------------------------STATS--------------------------------*/
 .b-stats{
 	display: none;
-	padding: 100px 0 50px;
-	width:800px;
+	padding: 120px 0 50px;
+	width:960px;
 	margin: auto;
 }
+.b-stats__title{
+	text-align: center;
+	h1{
+		font-size: 55px;
+		color:#fff;
+		font-weight: 800;
+		margin: 0;
+		text-transform: uppercase;
+		letter-spacing: 10px;
+	}
+	span{
+		font-size: 19px;
+		color:rgba(86,86,86,1);
+	}
+}
+.b-stats__list{
+	padding-top: 60px;
+	text-align: justify;
+	&::after{
+		content:'';
+		width:100%;
+		@include inline-block;
+	}
+}
 .b-stats__item{
-	margin-bottom: 50px;
-	float: left;
-	width: 50%;
-	box-sizing:border-box;
-	padding-right: 20px;
-	height: 125px;
-	overflow: hidden;
+	width: 150px;
+	@include inline-block(top);
+	margin: 0 10px 50px;
+	position: relative;
+}
+.b-stats__pos{
+	position: absolute;
+	top: -2px;
+	right: 104%;
+	color:#fff;
 }
 .b-stats__image{
-	float: left;
-	width:125px;
+
+	width:100%;
 	@include border-radius(27px);
 	overflow: hidden;
+	margin-bottom: 10px;
 	img{
 		display: block;
 		width: 100%;
 	}
 }
 .b-stats__info{
-	margin-left: 150px;
 }
 .b-stats__name{
 	color:#fff;
 	overflow: hidden;
-	max-height: 47px;
-	margin: 15px 0 7px;
-	font-size: 20px;
-	font-weight: 700;
+	font-size: 16px;
+	text-overflow:ellipsis;
+	font-weight: 600;
+	white-space: nowrap;
+	height: 22px;
+
 }
 
 .b-stats__artist{
-	color:#000;
-	font-size: 13px;
-	margin-bottom: 7px;
-}
-.b-stats__stat{
-	color:#fff;
-	font-size: 17px;
-	font-weight: 700;
+	color:#525252;
+	font-size: 14px;
+	overflow: hidden;
+	height: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
-.b-stats__item:first-child{
-	width: 100%;
-	height: 250px;
 
-	.b-stats__image{
-		width:250px;
-		@include border-radius(54px);
-	}
 
-	.b-stats__info{
-		margin-left: 300px;
-	}
-
-	.b-stats__name{
-		font-size: 30px;
-		max-height: 74px;
-	}
-
-}
 
 /*---------------------------------ABOUT-----------------------*/
 .b-about{

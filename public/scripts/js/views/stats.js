@@ -10,10 +10,9 @@
         var that;
         that = this;
         that.$el.html('');
-        _.each(this.icons, function(item, index) {
-          that.$el.append(that.template(item));
-        });
-        that.$el.append($('<div />').addClass('clear'));
+        that.$el.append(that.template({
+          icons: this.icons
+        }));
       },
       getStats: function() {
         var that;

@@ -8,11 +8,7 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 		render : ()->
 			that = @;
 			that.$el.html('');
-			_.each(@icons, (item,index) ->
-				that.$el.append(that.template(item))  
-				return
-			);
-			that.$el.append($('<div />').addClass('clear'))  
+			that.$el.append(that.template({icons:@icons}))  
 			return
 		getStats : ()->
 			that = @
