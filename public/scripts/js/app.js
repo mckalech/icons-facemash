@@ -30,7 +30,7 @@
       },
       routeShare: function(name1, name2) {
         routeAdditional(sharedView, {
-          active: 'logo',
+          bigLogo: true,
           black: true
         });
         sharedView.showShare(name1, name2);

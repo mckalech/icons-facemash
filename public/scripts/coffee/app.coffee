@@ -22,7 +22,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			statsView.getStats()
 			return
 		routeShare : (name1, name2)->
-			routeAdditional(sharedView, {active:'logo',black:on})
+			routeAdditional(sharedView, {bigLogo:on, black:on})
 			sharedView.showShare(name1, name2)
 			return
 		routeAbout : () ->

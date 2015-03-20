@@ -1,4 +1,4 @@
-define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/pair.html'], ($, _, Backbone, imagesLoaded, shareTemplate) ->	
+define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/shared.html'], ($, _, Backbone, imagesLoaded, shareTemplate) ->	
 	VoteView = Backbone.View.extend({
 		url : "http://82.146.46.215:8000/apps/share/"
 		el : $('.b-share')

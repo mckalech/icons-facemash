@@ -33,6 +33,7 @@ body{
 	left: 0;
 	right: 0;
 	padding: 30px 70px;
+	min-height: 24px;
 	background: rgba(0,0,0,0.1);
 	z-index: 10;
 	&_black{
@@ -64,11 +65,34 @@ a.b-header__logo_active{
 	a{
 		margin: 0 25px;
 	}
-	.b-menu__item_active{
-		color:#fff;
+	.b-menu__item{
+		position: relative;
+		&_active{
+			color:#fff;
+			&::after{
+				position: absolute;
+				content: "";
+				height:3px;
+				width: 100%;
+				top:-32px;
+				left:0;
+				background: #fff;
+			}
+		}
 	}
 }
-
+a.b-header__big-logo{
+	font-size: 50px;
+	color:#fff;
+	width: 330px;
+	margin: 50px auto 20px; 
+	line-height: 37px;
+	display: block;
+	text-align: center;
+	height: 40px;
+	overflow: hidden;
+	letter-spacing: 8px;
+}
 /*----------------------------------SHARE--------------------------------*/
 .b-share{
 	display: none;
@@ -80,6 +104,15 @@ a.b-header__logo_active{
 	z-index: 2;
 	min-width: 800px;
 	min-height: 700px;
+}
+.b-shared__footer{
+	position: absolute;
+	left:0;
+	bottom: 0;
+	right: 0;
+	z-index: 5;
+	height: 200px;
+	background: #0a0b0c;
 }
 
 /*----------------------------------PAIR--------------------------------*/
@@ -191,7 +224,7 @@ a.b-header__logo_active{
 .b-link__name{
 	font-size: 16px;
 	color:#fff;
-	font-weight: bold;
+	font-weight: 600;
 	max-width: 250px;
 	height: 25px;
 	overflow: hidden;
