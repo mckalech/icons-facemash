@@ -1,9 +1,10 @@
-define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared', 'views/about','views/header'], ($, _, Backbone, VoteView, StatsView, SharedView, AboutView, HeaderView) ->
+define ['jquery', 'underscore', 'backbone','views/vote','views/stats','views/elo', 'views/shared', 'views/about','views/header'], ($, _, Backbone, VoteView, StatsView, EloView, SharedView, AboutView, HeaderView) ->
 	statsView = null
 	sharedView = null
 	voteView = null
 	headerView = null
 	aboutView = null
+	eloView = null
 	$pages = $('.b-block')
 	iconsRouter = null
 
@@ -11,6 +12,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 		routes :
 			"" : "index",
 			"top" : "routeStats"
+			"elo" : "eloStats"
 			"share/:name1/vs/:name2" : "routeShare"
 			"about": "routeAbout"
 		index : ()->
@@ -20,6 +22,10 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 		routeStats : ()->
 			routeAdditional(statsView, {active:'top', black:on})
 			statsView.getStats()
+			return
+		eloStats : ()->
+			routeAdditional(eloView, {active:'top', black:on})
+			eloView.getStats()
 			return
 		routeShare : (name1, name2)->
 			routeAdditional(sharedView, {bigLogo:on, black:on})
@@ -41,6 +47,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 		init : () -> 
 			voteView = new VoteView()
 			statsView = new StatsView()
+			eloView = new EloView()
 			sharedView = new SharedView()
 			aboutView = new AboutView()
 			headerView = new HeaderView()

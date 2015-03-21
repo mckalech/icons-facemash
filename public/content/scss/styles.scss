@@ -315,6 +315,9 @@ a.b-header__big-logo{
 	width:960px;
 	margin: auto;
 }
+.b-elo{
+	@extend .b-stats;
+}
 .b-stats__title{
 	text-align: center;
 	h1{
