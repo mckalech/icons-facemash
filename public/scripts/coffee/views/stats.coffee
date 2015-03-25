@@ -1,6 +1,6 @@
 define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../templates/stats.html'], ($, _, Backbone, imagesLoaded, statsTemplate) ->	
 	StatsView = Backbone.View.extend({
-		url : "http://82.146.46.215:8000/apps/top/"
+		url : "http://82.146.46.215:8000/apps/top/elo"
 		el : $('.b-stats')
 		template : _.template(statsTemplate)
 		initialize : (options)->
@@ -19,10 +19,10 @@ define ['jquery', 'underscore', 'backbone', 'imagesLoaded' ,'text!../../template
 				success:(answer)->
 					that.icons = answer.apps
 					that.render()
-					that.$el.imagesLoaded(()->
-						that.$el.addClass('active')
-						return
-					)
+					that.$el.addClass('active')
+					#that.$el.imagesLoaded(()->
+					#	return
+					#)
 					return
 			})
 			return
