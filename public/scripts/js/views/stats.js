@@ -2,7 +2,7 @@
   define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/stats.html'], function($, _, Backbone, imagesLoaded, statsTemplate) {
     var StatsView;
     StatsView = Backbone.View.extend({
-      url: "http://82.146.46.215:8000/apps/top/elo",
+      url: "http://82.146.46.215:8000/apps/top",
       el: $('.b-stats'),
       template: _.template(statsTemplate),
       initialize: function(options) {},

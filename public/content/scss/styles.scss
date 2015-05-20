@@ -137,7 +137,6 @@ a.b-header__big-logo{
 	z-index: 3;
 	background-size: cover;
 	background-position: center;
-	@include filter(blur(45px) );
 	@include opacity(0.18);
 
 	&.b-icon_left{
@@ -196,7 +195,6 @@ a.b-header__big-logo{
 	img{
 		display: block;
 		width: 100%;
-		@include border-radius(54px);
 		
 	}
 	.b-pair & img{
@@ -354,7 +352,6 @@ a.b-header__big-logo{
 .b-stats__image{
 
 	width:100%;
-	@include border-radius(27px);
 	overflow: hidden;
 	margin-bottom: 10px;
 	img{
