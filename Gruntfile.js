@@ -5,8 +5,8 @@ module.exports = function(grunt) {
 		requirejs: {
 			compile: {
 				options: {
-					baseUrl: "./public/scripts/js",
-					mainConfigFile:"./public/scripts/js/main.js",
+					baseUrl: "./public/static/scripts/js",
+					mainConfigFile:"./public/static/scripts/js/main.js",
 				    name: "main",
 				    out: "./public/scripts/main-built.js",
 				    preserveLicenseComments: false,
@@ -19,11 +19,11 @@ module.exports = function(grunt) {
 		compass: {
 			dist: {
 				options: {
-					basePath:'public/content/',
+					basePath:'public/static/content/',
 					sassDir:'scss',
 					cssDir:'css',
 					imagesDir : 'img',
-					httpPath : '/content/',
+					httpPath : '/static/content/',
 					outputStyle:'compressed'
 				}
 			}
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 	 	coffee:{
 			compile:{ 
 				expand: true,
-				cwd: 'public/scripts/coffee',
+				cwd: 'public/static/scripts/coffee',
 				src: ['{,*/}*.coffee'],
 				dest: 'public/scripts/js',
 				ext: ".js",
@@ -40,15 +40,15 @@ module.exports = function(grunt) {
  
 		watch: {
 			compass: {
-				files: 'public/content/scss/*.scss', // следить за изменениями любых файлов с разширениями .scss
+				files: 'public/static/content/scss/*.scss', // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['compass'] // и запускать такую задачу при их изменении
 			},
 			coffee: {
-				files: 'public/scripts/**/*.coffee', // следить за изменениями любых файлов с разширениями .scss
+				files: 'public/static/scripts/**/*.coffee', // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['coffee:compile'] // и запускать такую задачу при их изменении
 			},
 			requirejs: {
-				files: ['public/scripts/js/**/*.js', 'public/scripts/**/*.html'], // следить за изменениями любых файлов с разширениями .scss
+				files: ['public/static/scripts/js/**/*.js', 'public/static/scripts/**/*.html'], // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['requirejs:compile'] // и запускать такую задачу при их изменении
 			}
 		}
