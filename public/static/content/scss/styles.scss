@@ -16,8 +16,8 @@ body{
 	min-height: 100%;
 	background: #0e0f10;
 	min-width: 800px;
-	position: relative; 
-	font-family: 'Open Sans';
+	position: relative;
+	font-family: 'Open Sans'; 
 }
 .b-block{
 	@include transition( opacity 300ms linear);

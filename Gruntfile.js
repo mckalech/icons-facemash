@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 					baseUrl: "./public/static/scripts/js",
 					mainConfigFile:"./public/static/scripts/js/main.js",
 				    name: "main",
-				    out: "./public/scripts/main-built.js",
+				    out: "./public/static/scripts/main-built.js",
 				    preserveLicenseComments: false,
 				    optimize:'uglify2',
 				    generateSourceMaps: true
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'public/static/scripts/coffee',
 				src: ['{,*/}*.coffee'],
-				dest: 'public/scripts/js',
+				dest: 'public/static/scripts/js',
 				ext: ".js",
 			}
 	 	},
