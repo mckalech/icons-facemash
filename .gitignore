@@ -8,7 +8,7 @@ node_modules/
 
 
 # bower
-public/static/scripts/js/libs/
+static/scripts/js/libs/
 
 *.sublime-project
 *.sublime-workspace

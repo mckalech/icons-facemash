@@ -5,10 +5,10 @@ module.exports = function(grunt) {
 		requirejs: {
 			compile: {
 				options: {
-					baseUrl: "./public/static/scripts/js",
-					mainConfigFile:"./public/static/scripts/js/main.js",
+					baseUrl: "./static/scripts/js",
+					mainConfigFile:"./static/scripts/js/main.js",
 				    name: "main",
-				    out: "./public/static/scripts/main-built.js",
+				    out: "./static/scripts/main-built.js",
 				    preserveLicenseComments: false,
 				    optimize:'uglify2',
 				    generateSourceMaps: true
@@ -19,11 +19,11 @@ module.exports = function(grunt) {
 		compass: {
 			dist: {
 				options: {
-					basePath:'public/static/content/',
+					basePath:'static/content/',
 					sassDir:'scss',
 					cssDir:'css',
 					imagesDir : 'img',
-					httpPath : '/static/static/content/',
+					httpPath : '/static/content/',
 					outputStyle:'compressed'
 				}
 			}
@@ -31,24 +31,24 @@ module.exports = function(grunt) {
 	 	coffee:{
 			compile:{ 
 				expand: true,
-				cwd: 'public/static/scripts/coffee',
+				cwd: 'static/scripts/coffee',
 				src: ['{,*/}*.coffee'],
-				dest: 'public/static/scripts/js',
+				dest: 'static/scripts/js',
 				ext: ".js",
 			}
 	 	},
  
 		watch: {
 			compass: {
-				files: 'public/static/content/scss/*.scss', // следить за изменениями любых файлов с разширениями .scss
+				files: 'static/content/scss/*.scss', // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['compass'] // и запускать такую задачу при их изменении
 			},
 			coffee: {
-				files: 'public/static/scripts/**/*.coffee', // следить за изменениями любых файлов с разширениями .scss
+				files: 'static/scripts/**/*.coffee', // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['coffee:compile'] // и запускать такую задачу при их изменении
 			},
 			requirejs: {
-				files: ['public/static/scripts/js/**/*.js', 'public/static/scripts/**/*.html'], // следить за изменениями любых файлов с разширениями .scss
+				files: ['static/scripts/js/**/*.js', 'static/scripts/**/*.html'], // следить за изменениями любых файлов с разширениями .scss
 				tasks: ['requirejs:compile'] // и запускать такую задачу при их изменении
 			}
 		}
