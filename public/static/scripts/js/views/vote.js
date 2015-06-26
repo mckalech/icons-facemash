@@ -2,7 +2,7 @@
   define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'utils/share', 'text!../../templates/pair.html'], function($, _, Backbone, imagesLoaded, shareUtils, iconTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
-      url: "http://82.146.46.215:8000/apps/competition/",
+      url: "http://appsmash.cc/apps/competition/",
       el: $('.b-pair'),
       isBlocked: false,
       statsShown: false,

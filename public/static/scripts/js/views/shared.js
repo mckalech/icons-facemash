@@ -2,7 +2,7 @@
   define(['jquery', 'underscore', 'backbone', 'imagesLoaded', 'text!../../templates/shared.html'], function($, _, Backbone, imagesLoaded, shareTemplate) {
     var VoteView;
     VoteView = Backbone.View.extend({
-      url: "http://82.146.46.215:8000/apps/share/",
+      url: "http://appsmash.cc/apps/share/",
       el: $('.b-share'),
       template: _.template(shareTemplate),
       initialize: function(options) {},
