@@ -1,11 +1,12 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/shared', 'views/about', 'views/header'], function($, _, Backbone, VoteView, StatsView, SharedView, AboutView, HeaderView) {
-    var $pages, IconsRouter, aboutView, headerView, iconsRouter, routeAdditional, sharedView, statsView, voteView;
+  define(['jquery', 'underscore', 'backbone', 'views/vote', 'views/stats', 'views/shared', 'views/about', 'views/add', 'views/header'], function($, _, Backbone, VoteView, StatsView, SharedView, AboutView, AddView, HeaderView) {
+    var $pages, IconsRouter, aboutView, addView, headerView, iconsRouter, routeAdditional, sharedView, statsView, voteView;
     statsView = null;
     sharedView = null;
     voteView = null;
     headerView = null;
     aboutView = null;
+    addView = null;
     $pages = $('.b-block');
     iconsRouter = null;
     IconsRouter = Backbone.Router.extend({
@@ -13,7 +14,8 @@
         "": "index",
         "top": "routeStats",
         "share/:name1/vs/:name2": "routeShare",
-        "about": "routeAbout"
+        "about": "routeAbout",
+        "add": "routeAdd"
       },
       index: function() {
         routeAdditional(voteView, {
@@ -24,7 +26,8 @@
       routeStats: function() {
         routeAdditional(statsView, {
           active: 'top',
-          black: true
+          black: true,
+          arrow: true
         });
         statsView.getStats();
       },
@@ -38,9 +41,18 @@
       routeAbout: function() {
         routeAdditional(aboutView, {
           active: 'about',
-          black: true
+          black: true,
+          arrow: true
         });
         aboutView.showAbout();
+      },
+      routeAdd: function() {
+        routeAdditional(addView, {
+          active: 'add',
+          black: true,
+          arrow: true
+        });
+        addView.showAdd();
       }
     });
     routeAdditional = function(view, headerOptions) {
@@ -54,6 +66,7 @@
         statsView = new StatsView();
         sharedView = new SharedView();
         aboutView = new AboutView();
+        addView = new AddView();
         headerView = new HeaderView();
         iconsRouter = new IconsRouter;
         Backbone.history.start();

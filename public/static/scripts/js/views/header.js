@@ -17,7 +17,8 @@
         that.$el.html('');
         templateData = {
           active: options.active,
-          bigLogo: options.bigLogo
+          bigLogo: options.bigLogo,
+          arrow: options.arrow
         };
         that.$el.append(that.template(templateData));
         if (options.black) {

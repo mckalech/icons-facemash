@@ -1,6 +1,6 @@
-<a class="b-header__logo <% if(active=="logo"){ %> b-header__logo_active<% } %>" href="/#" <% if(bigLogo){ %> style="display:none;" <% } %> >Appsmash</a>
+<a class="b-header__logo <% if(arrow){ %> b-header__logo_active<% } %>" href="/#" <% if(bigLogo){ %> style="display:none;" <% } %>><i></i>Appsmash</a>
 <div class="b-menu">
-	<a class='b-menu__item'  href='#add'>Add your app</a>
+	<a class='b-menu__item<% if(active=="add"){ %> b-menu__item_active<% } %>'  href='#add'>Add your app</a>
 	<a class='b-menu__item<% if(active=="top"){ %> b-menu__item_active<% } %>' href="#top">Top 100</a>
 	<a class='b-menu__item<% if(active=="about"){ %> b-menu__item_active<% } %>' href="#about">About</a>
 </div>

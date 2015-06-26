@@ -12,6 +12,7 @@ define ['jquery', 'underscore', 'backbone', 'text!../../templates/header.html'],
 			templateData = {
 				active : options.active
 				bigLogo : options.bigLogo
+				arrow: options.arrow
 			}
 			that.$el.append(that.template(templateData))  
 

@@ -49,10 +49,23 @@ body{
 		text-transform: uppercase;
 		font-weight: bold;
 		letter-spacing: 1.5px;
+		position: relative;
+		i{
+			display: none;
+			@include sprite($sprite, back-arrow); 
+			width:17px;
+			height: 14px;
+			position: absolute;
+			left: -30px;
+			top: 4px;
+		}
 	}
 }
 a.b-header__logo_active{
 	color:#fff;
+	i{
+		display: block;
+	}
 }
 .b-menu{
 	width: 500px;
@@ -93,6 +106,23 @@ a.b-header__big-logo{
 	overflow: hidden;
 	letter-spacing: 8px;
 }
+
+.b-title{
+	text-align: center;
+	h1{
+		font-size: 55px;
+		color:#fff;
+		font-weight: 800;
+		margin: 0;
+		text-transform: uppercase;
+		letter-spacing: 10px;
+		margin-bottom: 20px;
+	}
+	span{
+		font-size: 19px;
+		color:rgba(86,86,86,1);
+	}
+}
 /*----------------------------------SHARE--------------------------------*/
 .b-share{
 	display: none;
@@ -132,9 +162,7 @@ a.b-header__big-logo{
 	width:50%;
 	height: 100%;
 	position: absolute;
-	top:0;
-	background: #fff;
-	z-index: 3;
+	top:0;	z-index: 3;
 	background-size: cover;
 	background-position: center;
 	@include opacity(0.18);
@@ -313,21 +341,7 @@ a.b-header__big-logo{
 	width:960px;
 	margin: auto;
 }
-.b-stats__title{
-	text-align: center;
-	h1{
-		font-size: 55px;
-		color:#fff;
-		font-weight: 800;
-		margin: 0;
-		text-transform: uppercase;
-		letter-spacing: 10px;
-	}
-	span{
-		font-size: 19px;
-		color:rgba(86,86,86,1);
-	}
-}
+
 .b-stats__list{
 	padding-top: 60px;
 	text-align: justify;
@@ -387,10 +401,15 @@ a.b-header__big-logo{
 /*---------------------------------ABOUT-----------------------*/
 .b-about{
 	display: none;
-	padding: 100px 0 50px;
-	width:800px;
+	padding: 120px 0 50px;
+	width:960px;
 	margin: auto;
-	color:#fff;
-	background: red;
 }
 
+
+.b-add{
+	display: none;
+	padding: 120px 0 50px;
+	width:960px;
+	margin: auto;
+}

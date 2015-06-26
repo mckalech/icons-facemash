@@ -1,9 +1,10 @@
-define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared', 'views/about','views/header'], ($, _, Backbone, VoteView, StatsView, SharedView, AboutView, HeaderView) ->
+define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/shared', 'views/about', 'views/add','views/header'], ($, _, Backbone, VoteView, StatsView, SharedView, AboutView, AddView, HeaderView) ->
 	statsView = null
 	sharedView = null
 	voteView = null
 	headerView = null
 	aboutView = null
+	addView = null
 	$pages = $('.b-block')
 	iconsRouter = null
 
@@ -13,12 +14,13 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			"top" : "routeStats"
 			"share/:name1/vs/:name2" : "routeShare"
 			"about": "routeAbout"
+			"add": "routeAdd"
 		index : ()->
 			routeAdditional(voteView, {black:off})
 			voteView.clearAndGet()
 			return
 		routeStats : ()->
-			routeAdditional(statsView, {active:'top', black:on})
+			routeAdditional(statsView, {active:'top', black:on, arrow:on})
 			statsView.getStats()
 			return
 		routeShare : (name1, name2)->
@@ -26,8 +28,12 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			sharedView.showShare(name1, name2)
 			return
 		routeAbout : () ->
-			routeAdditional(aboutView, {active:'about',black:on})
+			routeAdditional(aboutView, {active:'about',black:on, arrow:on})
 			aboutView.showAbout()
+			return
+		routeAdd : () ->
+			routeAdditional(addView, {active:'add',black:on, arrow:on})
+			addView.showAdd()
 			return
 	})
 
@@ -43,6 +49,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			statsView = new StatsView()
 			sharedView = new SharedView()
 			aboutView = new AboutView()
+			addView = new AddView()
 			headerView = new HeaderView()
 
 			iconsRouter = new IconsRouter
