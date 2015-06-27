@@ -15,7 +15,8 @@
         "top": "routeStats",
         "share/:name1/vs/:name2": "routeShare",
         "about": "routeAbout",
-        "add": "routeAdd"
+        "add": "routeAdd",
+        "*path": "route404"
       },
       index: function() {
         routeAdditional(voteView, {
@@ -53,6 +54,9 @@
           arrow: true
         });
         addView.showAdd();
+      },
+      route404: function() {
+        alert(404);
       }
     });
     routeAdditional = function(view, headerOptions) {

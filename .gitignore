@@ -7,8 +7,7 @@ node_modules/
 .sass-cache/
 
 
-# bower
-static/scripts/js/libs/
+
 
 *.sublime-project
 *.sublime-workspace

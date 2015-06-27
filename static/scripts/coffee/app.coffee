@@ -15,6 +15,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			"share/:name1/vs/:name2" : "routeShare"
 			"about": "routeAbout"
 			"add": "routeAdd"
+			"*path": "route404"
 		index : ()->
 			routeAdditional(voteView, {black:off})
 			voteView.clearAndGet()
@@ -34,6 +35,9 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 		routeAdd : () ->
 			routeAdditional(addView, {active:'add',black:on, arrow:on})
 			addView.showAdd()
+			return
+		route404: () ->
+			alert(404)
 			return
 	})
 
