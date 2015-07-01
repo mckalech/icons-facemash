@@ -55,7 +55,6 @@ body{
 			color:#fff;
 		}
 		&:active{
-			top:2px;
 		}
 		i{
 			display: none;
@@ -98,11 +97,6 @@ a.b-header__logo_active{
 				left:0;
 				background: #fff;
 			}
-			&:active{
-				&::after{
-					top:-34px;
-				}
-			}
 		}
 
 	}
@@ -132,9 +126,6 @@ a.b-header__logo_active{
 			opacity: 1;
 		}
 		&:active{
-
-			position: relative;
-			top:2px;
 			opacity: 0.3;
 		}
 
@@ -359,7 +350,6 @@ a.b-header__big-logo{
 	&:active{
 
 		position: relative;
-		top:3px;
 		opacity: 0.3;
 	}
 }
