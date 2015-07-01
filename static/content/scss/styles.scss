@@ -50,6 +50,12 @@ body{
 		font-weight: bold;
 		letter-spacing: 1.5px;
 		position: relative;
+		&:hover{
+			color:#fff;
+		}
+		&:active{
+			top:3px;
+		}
 		i{
 			display: none;
 			@include sprite($sprite, back-arrow); 
@@ -91,7 +97,13 @@ a.b-header__logo_active{
 				left:0;
 				background: #fff;
 			}
+			&:active{
+				&::after{
+					top:-35px;
+				}
+			}
 		}
+
 	}
 }
 a.b-header__big-logo{
@@ -227,9 +239,15 @@ a.b-header__big-logo{
 	}
 	.b-pair & img{
 		cursor: pointer;
-		// &:hover{
-		// 	@include filter(drop-shadow(0 7px 9px #000));
-		// }
+		opacity: 0.9;
+		position: relative;
+		&:hover{
+			opacity: 1;
+		}
+		&:active{
+			opacity: 0.6;
+			top:5px;
+		}
 	}
 
 }
@@ -291,6 +309,15 @@ a.b-header__big-logo{
 		@include sprite($sprite, share-pair-tw); 
 		width:33px;
 		height: 26px;
+	}
+	&:hover{
+		opacity: 0.6;
+	}
+	&:active{
+
+		position: relative;
+		top:3px;
+		opacity: 0.3;
 	}
 }
 
