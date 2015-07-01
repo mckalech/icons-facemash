@@ -4,6 +4,11 @@
 	<a class='b-menu__item<% if(active=="top"){ %> b-menu__item_active<% } %>' href="#top">Top 100</a>
 	<a class='b-menu__item<% if(active=="about"){ %> b-menu__item_active<% } %>' href="#about">About</a>
 </div>
+<div class='b-header__share <% if(headerSharingWhite){ %> b-header__share_white<% } %>'>
+	<span class='b-header__share-item b-header__share-item_fb' data-type="fb"></span>
+	<span class='b-header__share-item b-header__share-item_tw' data-type="tw"></span>
+</div>
+
 <% if(bigLogo){ %> 
 	<a class="b-header__big-logo" href="/#"> Appsmash</a>
 <% } %>

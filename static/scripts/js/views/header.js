@@ -1,10 +1,14 @@
 (function() {
-  define(['jquery', 'underscore', 'backbone', 'text!../../templates/header.html'], function($, _, Backbone, headerTemplate) {
+  define(['jquery', 'underscore', 'backbone', 'utils/share', 'text!../../templates/header.html'], function($, _, Backbone, shareUtils, headerTemplate) {
     var HeaderView;
     HeaderView = Backbone.View.extend({
       el: $('.b-header'),
       blackClass: 'b-header_black',
+      sharePhrase: 'Super puper app!!',
       template: _.template(headerTemplate),
+      events: {
+        'click .b-header__share-item': 'shareClick'
+      },
       initialize: function(options) {
         this.render();
       },
@@ -18,7 +22,8 @@
         templateData = {
           active: options.active,
           bigLogo: options.bigLogo,
-          arrow: options.arrow
+          arrow: options.arrow,
+          headerSharingWhite: options.headerSharingWhite
         };
         that.$el.append(that.template(templateData));
         if (options.black) {
@@ -26,6 +31,11 @@
         } else {
           this.$el.removeClass(this.blackClass);
         }
+      },
+      shareClick: function(e) {
+        var type;
+        type = $(e.currentTarget).data('type');
+        return shareUtils[type](location.origin, this.sharePhrase, this.sharePhrase);
       }
     });
     return HeaderView;

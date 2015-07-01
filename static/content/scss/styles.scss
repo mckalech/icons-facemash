@@ -34,7 +34,7 @@ body{
 	right: 0;
 	padding: 30px 70px;
 	min-height: 24px;
-	background: rgba(0,0,0,0.1);
+	background: rgba(0,0,0,0.2);
 	z-index: 10;
 	&_black{
 		background: #0a0b0c;
@@ -50,11 +50,12 @@ body{
 		font-weight: bold;
 		letter-spacing: 1.5px;
 		position: relative;
+		@include transition( all 200ms linear);
 		&:hover{
 			color:#fff;
 		}
 		&:active{
-			top:3px;
+			top:2px;
 		}
 		i{
 			display: none;
@@ -99,13 +100,57 @@ a.b-header__logo_active{
 			}
 			&:active{
 				&::after{
-					top:-35px;
+					top:-34px;
 				}
 			}
 		}
 
 	}
 }
+
+.b-header__share{
+	@include inline-block;
+	float: right;
+	height: 17px;
+	.b-header__share-item{
+		@include inline-block;
+		cursor: pointer;
+		opacity: 0.6;
+		@include transition( opacity 300ms linear);
+		&_fb{
+			@include sprite($sprite, share-header-fb); 
+			width:9px;
+			height: 17px;
+			margin-right: 15px;
+		}
+		&_tw{
+			@include sprite($sprite, share-header-tw); 
+			width:19px;
+			height: 15px;
+		}
+		&:hover{
+			opacity: 1;
+		}
+		&:active{
+
+			position: relative;
+			top:2px;
+			opacity: 0.3;
+		}
+
+
+	}
+	&_white{
+		.b-header__share-item{
+			opacity: 1;
+			&:hover{
+				opacity: 0.6;
+			}
+		}
+	}
+	
+}
+
 a.b-header__big-logo{
 	font-size: 50px;
 	color:#fff;
@@ -239,14 +284,10 @@ a.b-header__big-logo{
 	}
 	.b-pair & img{
 		cursor: pointer;
-		opacity: 0.9;
+		opacity: 0.95;
 		position: relative;
 		&:hover{
 			opacity: 1;
-		}
-		&:active{
-			opacity: 0.6;
-			top:5px;
 		}
 	}
 
@@ -299,6 +340,8 @@ a.b-header__big-logo{
 	height: 30px;
 	@include inline-block;
 	cursor: pointer;
+
+	@include transition( opacity 300ms linear);
 	&_fb{
 		@include sprite($sprite, share-pair-fb); 
 		width:15px;
@@ -329,10 +372,8 @@ a.b-header__big-logo{
 	cursor: pointer;
 	@include user-select(none);
 	font-size: 15px;
-}
-.b-pair-stats-switcher{
 	line-height: 31px;
-	color:rgba(86,86,86,0.5);
+	color:#fff;
 	&_active{
 		.b-pair-stats-switcher__text_show{
 			display: none;
@@ -341,8 +382,20 @@ a.b-header__big-logo{
 			display: block;
 		}
 	}
+	
+
 }
 .b-pair-stats-switcher__text{
+	opacity: 0.6;
+	position: relative;
+	@include transition( opacity 300ms linear);
+	&:hover{
+		opacity: 1;
+	}
+	&:active{
+		opacity: 0.3;
+	}
+
 	i{
 		@include inline-block;
 		width: 31px;

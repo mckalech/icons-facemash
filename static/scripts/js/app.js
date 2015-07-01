@@ -28,7 +28,8 @@
         routeAdditional(statsView, {
           active: 'top',
           black: true,
-          arrow: true
+          arrow: true,
+          headerSharingWhite: true
         });
         statsView.getStats();
       },
@@ -43,7 +44,8 @@
         routeAdditional(aboutView, {
           active: 'about',
           black: true,
-          arrow: true
+          arrow: true,
+          headerSharingWhite: true
         });
         aboutView.showAbout();
       },
@@ -51,7 +53,8 @@
         routeAdditional(addView, {
           active: 'add',
           black: true,
-          arrow: true
+          arrow: true,
+          headerSharingWhite: true
         });
         addView.showAdd();
       },

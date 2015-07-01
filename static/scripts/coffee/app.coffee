@@ -21,7 +21,7 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			voteView.clearAndGet()
 			return
 		routeStats : ()->
-			routeAdditional(statsView, {active:'top', black:on, arrow:on})
+			routeAdditional(statsView, {active:'top', black:on, arrow:on, headerSharingWhite:on})
 			statsView.getStats()
 			return
 		routeShare : (name1, name2)->
@@ -29,11 +29,11 @@ define ['jquery', 'underscore', 'backbone','views/vote','views/stats', 'views/sh
 			sharedView.showShare(name1, name2)
 			return
 		routeAbout : () ->
-			routeAdditional(aboutView, {active:'about',black:on, arrow:on})
+			routeAdditional(aboutView, {active:'about',black:on, arrow:on, headerSharingWhite:on})
 			aboutView.showAbout()
 			return
 		routeAdd : () ->
-			routeAdditional(addView, {active:'add',black:on, arrow:on})
+			routeAdditional(addView, {active:'add',black:on, arrow:on, headerSharingWhite:on})
 			addView.showAdd()
 			return
 		route404: () ->
