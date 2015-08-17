@@ -1,7 +1,7 @@
 define ['jquery', 'underscore', 'backbone' ,'text!../../templates/add.html'], ($, _, Backbone, addTemplate) ->	
 	AddView = Backbone.View.extend({
 		el : $('.b-add')
-		url : "http://appsmash.cc/"
+		url : "http://appsmash.cc/apps/add/"
 		template : _.template(addTemplate)
 		events : 
 			'submit .b-add__form' : 'submitForm'
@@ -20,8 +20,23 @@ define ['jquery', 'underscore', 'backbone' ,'text!../../templates/add.html'], ($
 			,0)
 			return
 		submitForm:(e) ->
+			that = @
 			e.preventDefault()
-			$.post(@url, $(e.currentTarget).serialize())
+			$.post(@url, $(e.currentTarget).serialize()).done((data)->
+				console.log('ok')
+				return
+			).fail((e)->
+				that.showErrors($.parseJSON(e.responseText))
+				return
+			)
+			return
+		showErrors: (errors) ->
+			that = @
+			that.$el.find('.b-add__input').removeClass('b-add__input_error')
+			$.each(errors, (key, val)->
+				that.$el.find("[name='#{ key }']").addClass('b-add__input_error')
+			)
+				 
 			return
 
 	});

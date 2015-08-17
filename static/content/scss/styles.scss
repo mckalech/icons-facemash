@@ -511,6 +511,10 @@ a.b-header__big-logo{
 	&:focus{
 		border-color:#ffd926;
 	}
+
+	&_error{
+		border-color:red;
+	}
 }
 .b-add__submit{
 	@include inline-block;
@@ -538,7 +542,7 @@ a.b-header__big-logo{
 	text-align: center;
 	padding-top: 10px;
 	font-size: 12px;
-  	color: rgba(86,86,86,0.5);
+  	color:#565656;
 }
 
 
