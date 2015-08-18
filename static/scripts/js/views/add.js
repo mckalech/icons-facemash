@@ -27,7 +27,9 @@
         that = this;
         e.preventDefault();
         $.post(this.url, $(e.currentTarget).serialize()).done(function(data) {
-          console.log('ok');
+          that.$el.find('.b-add__form, .b-title').fadeOut(400, function() {
+            return that.$el.find('.b-add__success').fadeIn();
+          });
         }).fail(function(e) {
           that.showErrors($.parseJSON(e.responseText));
         });
